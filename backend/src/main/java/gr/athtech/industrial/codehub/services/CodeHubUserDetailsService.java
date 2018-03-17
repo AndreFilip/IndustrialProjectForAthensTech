@@ -1,11 +1,13 @@
 package gr.athtech.industrial.codehub.services;
 
 import gr.athtech.industrial.codehub.model.CodeHubUser;
+import gr.athtech.industrial.codehub.model.Role;
 import gr.athtech.industrial.codehub.repositories.RoleRepository;
 import gr.athtech.industrial.codehub.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -38,6 +40,23 @@ public class CodeHubUserDetailsService implements UserDetailsService {
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(user.getRole().getName()));
         return new User(user.getEmail(),user.getPassword(), true, true, true, true, authorities);
+    }
+
+    public int saveUser(CodeHubUser user, String roleName) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        Role role = roleRepository.findRoleByName(roleName);
+        if (role == null)
+            return -1;
+        user.setRole(role);
+        try {
+            userRepository.save(user);
+            return 0;
+        } catch(DataIntegrityViolationException exception) {
+            if (exception.getRootCause().toString().contains("Duplicate entry"))
+                return -2;
+            else
+                return -3;
+        }
     }
 
 
