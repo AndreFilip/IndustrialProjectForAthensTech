@@ -20,3 +20,7 @@ CREATE TABLE codehub_user(
   UNIQUE (email)
 );
 CREATE INDEX codehub_user_role_id_fk ON codehub_user(role_id ASC);
+
+
+INSERT INTO role (name) VALUES ('admin');
+INSERT INTO role (name) VALUES ('user');
