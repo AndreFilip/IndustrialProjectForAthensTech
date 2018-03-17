@@ -16,8 +16,8 @@ import javax.transaction.Transactional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserRepoTest {
-    private static final Logger log = LoggerFactory.getLogger(UserRepoTest.class);
+public class CodeHubUserRepoTest {
+    private static final Logger log = LoggerFactory.getLogger(CodeHubUserRepoTest.class);
 
     @Autowired
     private RoleRepository roleRepository;

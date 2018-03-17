@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "codehub_user")
-public class User implements Serializable {
+public class CodeHubUser implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,10 +31,10 @@ public class User implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-    public User() {
+    public CodeHubUser() {
     }
 
-    public User(String email, String username, String password, Role role, String firstName, String lastName) {
+    public CodeHubUser(String email, String username, String password, Role role, String firstName, String lastName) {
         this.email = email;
         this.username = username;
         this.password = password;
@@ -101,7 +101,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "CodeHubUser{" +
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", username='" + username + '\'' +

@@ -1,13 +1,13 @@
 package gr.athtech.industrial.codehub.repositories;
 
-import gr.athtech.industrial.codehub.model.User;
+import gr.athtech.industrial.codehub.model.CodeHubUser;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface UserRepository extends PagingAndSortingRepository<User, Long> {
+public interface UserRepository extends PagingAndSortingRepository<CodeHubUser, Long> {
 
-    User findUserByEmail(String email);
+    CodeHubUser findUserByEmail(String email);
 
-    User findUserByUsername(String username);
+    CodeHubUser findUserByUsername(String username);
 
 
 }

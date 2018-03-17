@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>gr.athtech.industrial</groupId>
-	<artifactId>codehub-frontend</artifactId>
+	<artifactId>codehub</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
     <modules>
