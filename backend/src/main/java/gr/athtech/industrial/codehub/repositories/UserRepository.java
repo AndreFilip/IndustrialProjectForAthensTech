@@ -6,6 +6,10 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
+/**
+ *
+ * @author George Lalas
+ */
 public interface UserRepository extends PagingAndSortingRepository<CodeHubUser, Long> {
 
     CodeHubUser findUserByEmail(String email);

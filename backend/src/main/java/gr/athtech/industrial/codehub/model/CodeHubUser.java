@@ -3,6 +3,10 @@ package gr.athtech.industrial.codehub.model;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/**
+ *
+ * @author George Lalas
+ */
 @Entity
 @Table(name = "codehub_user")
 public class CodeHubUser implements Serializable {

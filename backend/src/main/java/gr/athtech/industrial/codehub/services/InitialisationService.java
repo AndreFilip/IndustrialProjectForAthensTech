@@ -15,6 +15,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ *
+ * @author George Lalas
+ */
 @Component
 public class InitialisationService implements ApplicationListener<ApplicationReadyEvent> {
     private static final Logger log = LoggerFactory.getLogger(InitialisationService.class);
@@ -58,7 +62,7 @@ public class InitialisationService implements ApplicationListener<ApplicationRea
         }
         role = roleRepository.findRoleByName("user");
         if(userRepository.findCodeHubUserByRole(role).size() == 0) {
-            log.info("There are no dealers registered yet!Initialising a user");
+            log.info("There are no users registered yet!Initialising a user");
             CodeHubUser user = new CodeHubUser();
             user.setFirstName("User");
             user.setLastName("Useridis");

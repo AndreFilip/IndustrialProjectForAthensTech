@@ -20,6 +20,10 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author George Lalas
+ */
 @Service("userService")
 public class CodeHubUserDetailsService implements UserDetailsService {
 
