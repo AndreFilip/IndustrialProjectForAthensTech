@@ -16,37 +16,48 @@
     <build>
         <plugins>
             <plugin>
-            <groupId>com.github.eirslett</groupId>
-            <artifactId>frontend-maven-plugin</artifactId>
-            <version>1.6</version>
-            <configuration>
-                <nodeVersion>v8.10.0</nodeVersion>
-                <yarnVersion>v1.5.1</yarnVersion>
-            </configuration>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <execution>
+                        <id>prepare-package</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/classes/public</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.basedir}/build</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.6</version>
                 <executions>
                     <execution>
                         <id>install node and yarn</id>
                         <goals>
                             <goal>install-node-and-yarn</goal>
                         </goals>
-                        <phase>generate-resources</phase>
-                    </execution>
-                    <execution>
-                        <id>yarn install</id>
-                        <goals>
-                            <goal>yarn</goal>
-                        </goals>
                         <configuration>
-                            <arguments>install</arguments>
+                            <nodeVersion>v9.9.0</nodeVersion>
+                            <yarnVersion>v1.5.1</yarnVersion>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>yarn lint</id>
+                        <id>yarn</id>
                         <goals>
                             <goal>yarn</goal>
                         </goals>
+                        <phase>prepare-package</phase>
                         <configuration>
-                            <arguments>lint</arguments>
                         </configuration>
                     </execution>
                     <execution>
@@ -54,20 +65,22 @@
                         <goals>
                             <goal>yarn</goal>
                         </goals>
-                        <phase>generate-resources</phase>
+                        <phase>prepare-package</phase>
                         <configuration>
                             <arguments>build</arguments>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>yarn test</id>
+                        <id>test</id>
                         <goals>
                             <goal>yarn</goal>
                         </goals>
                         <phase>test</phase>
                         <configuration>
-                            <arguments>test --watch false</arguments>
-                            <testFailureIgnore>true</testFailureIgnore>
+                            <arguments>test</arguments>
+                            <environmentVariables>
+                                <CI>true</CI>
+                            </environmentVariables>
                         </configuration>
                     </execution>
                 </executions>
