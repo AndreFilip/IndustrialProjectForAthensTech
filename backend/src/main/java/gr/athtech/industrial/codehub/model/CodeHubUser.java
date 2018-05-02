@@ -83,6 +83,13 @@ public class CodeHubUser implements Serializable {
             inverseJoinColumns=@JoinColumn(name="techstackId"))
     private Set<Techstack> userTechstack;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name="job_posts_user",
+            joinColumns=@JoinColumn(name="userId"),
+            inverseJoinColumns=@JoinColumn(name="job_posts_id"))
+    private Set<JobPosts> jobPosts;
+
     public CodeHubUser() {
     }
 
@@ -260,6 +267,14 @@ public class CodeHubUser implements Serializable {
         this.userTechstack = userTechstack;
     }
 
+    public Set<JobPosts> getJobPosts() {
+        return jobPosts;
+    }
+
+    public void setJobPosts(Set<JobPosts> jobPosts) {
+        this.jobPosts = jobPosts;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -284,12 +299,13 @@ public class CodeHubUser implements Serializable {
                 Objects.equal(getLinkedinPath(), that.getLinkedinPath()) &&
                 Objects.equal(getStackOverflowPath(), that.getStackOverflowPath()) &&
                 Objects.equal(getGitPath(), that.getGitPath()) &&
-                Objects.equal(userTechstack, that.userTechstack);
+                Objects.equal(getUserTechstack(), that.getUserTechstack()) &&
+                Objects.equal(getJobPosts(), that.getJobPosts());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId(), getEmail(), getUsername(), getPassword(), getRole(), getFirstName(), getLastName(), getCountry(), isActive, getDateCreated(), getLatestLogin(), getPhoneNumber(), getUserStatus(), getInternalComments(), getCvPath(), getAvatarPath(), getLinkedinPath(), getStackOverflowPath(), getGitPath(), userTechstack);
+        return Objects.hashCode(getId(), getEmail(), getUsername(), getPassword(), getRole(), getFirstName(), getLastName(), getCountry(), isActive, getDateCreated(), getLatestLogin(), getPhoneNumber(), getUserStatus(), getInternalComments(), getCvPath(), getAvatarPath(), getLinkedinPath(), getStackOverflowPath(), getGitPath(), getUserTechstack(), getJobPosts());
     }
 
     @Override
@@ -315,6 +331,7 @@ public class CodeHubUser implements Serializable {
                 ", stackOverflowPath='" + stackOverflowPath + '\'' +
                 ", gitPath='" + gitPath + '\'' +
                 ", userTechstack=" + userTechstack +
+                ", jobPosts=" + jobPosts +
                 '}';
     }
 }

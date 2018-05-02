@@ -1,6 +1,7 @@
 package gr.athtech.industrial.codehub.services;
 
 import gr.athtech.industrial.codehub.model.CodeHubUser;
+import gr.athtech.industrial.codehub.model.JobPosts;
 import gr.athtech.industrial.codehub.model.Role;
 import gr.athtech.industrial.codehub.repositories.RoleRepository;
 import gr.athtech.industrial.codehub.repositories.UserRepository;
@@ -18,7 +19,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -69,5 +72,16 @@ public class CodeHubUserDetailsService implements UserDetailsService {
         for (CodeHubUser user : userRepository.findAll())
             users.add(user);
         return users;
+    }
+
+    public void assignJobPostsToUser(JobPosts jobPosts, CodeHubUser user){
+        Set<JobPosts> jobPostsSet =user.getJobPosts();
+        if(jobPostsSet.contains(jobPosts)){
+            log.info("User already registered for this job post!");
+        }else {
+            jobPostsSet.add(jobPosts);
+            user.setJobPosts(jobPostsSet);
+            userRepository.save(user);
+        }
     }
 }

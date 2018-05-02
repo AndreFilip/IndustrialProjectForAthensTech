@@ -32,7 +32,7 @@ public class UserStatusServiceTests {
     public void userStatusChangeTest(){
         log.info("TESTING changeUserStatus()....");
         CodeHubUser user = userRepository.findUserByUsername("user0");
-        userStatusService.changeUserStatus(user, "Stage2", "admin");
+        userStatusService.changeUserStatus(user, "Stage3", "admin");
 
     }
 
