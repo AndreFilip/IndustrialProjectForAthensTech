@@ -46,22 +46,22 @@ public class CodeHubUserDetailsService implements UserDetailsService {
         return new User(user.getEmail(),user.getPassword(), true, true, true, true, authorities);
     }
 
-    public int saveUser(CodeHubUser user, String roleName) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        Role role = roleRepository.findRoleByName(roleName);
-        if (role == null)
-            return -1;
-        user.setRole(role);
-        try {
-            userRepository.save(user);
-            return 0;
-        } catch(DataIntegrityViolationException exception) {
-            if (exception.getRootCause().toString().contains("Duplicate entry"))
-                return -2;
-            else
-                return -3;
-        }
-    }
+//    public int saveUser(CodeHubUser user, String roleName) {
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        Role role = roleRepository.findRoleByName(roleName);
+//        if (role == null)
+//            return -1;
+//        user.setRole(role);
+//        try {
+//            userRepository.save(user);
+//            return 0;
+//        } catch(DataIntegrityViolationException exception) {
+//            if (exception.getRootCause().toString().contains("Duplicate entry"))
+//                return -2;
+//            else
+//                return -3;
+//        }
+//    }
 
 
     public List<CodeHubUser> getUsers() {

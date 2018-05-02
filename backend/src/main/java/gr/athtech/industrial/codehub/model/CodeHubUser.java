@@ -5,6 +5,7 @@ import com.google.common.base.Objects;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 /**
  *
@@ -54,17 +55,33 @@ public class CodeHubUser implements Serializable {
     @Column(name = "phone")
     private String phoneNumber;
 
-    @Column(name = "userProfileId")
-    private UserProfile userProfile;
-
     @Column(name = "userStatusId")
     private UserStatus userStatus;
 
-    @Column(name = "techstackId")
-    private Techstack techstack;
-
     @Column(name = "internalComments")
     private String internalComments;
+
+    @Column(name = "cvPath")
+    private String cvPath;
+
+    @Column(name = "avatarPath")
+    private String avatarPath;
+
+    @Column(name = "linkedinPath")
+    private String linkedinPath;
+
+    @Column(name = "stackoverflowPath")
+    private String stackOverflowPath;
+
+    @Column(name = "gitPath")
+    private String gitPath;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name="user_techstack",
+            joinColumns=@JoinColumn(name="userId"),
+            inverseJoinColumns=@JoinColumn(name="techstackId"))
+    private Set<Techstack> userTechstack;
 
     public CodeHubUser() {
     }
@@ -178,14 +195,6 @@ public class CodeHubUser implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public UserProfile getUserProfile() {
-        return userProfile;
-    }
-
-    public void setUserProfile(UserProfile userProfile) {
-        this.userProfile = userProfile;
-    }
-
     public UserStatus getUserStatus() {
         return userStatus;
     }
@@ -194,13 +203,6 @@ public class CodeHubUser implements Serializable {
         this.userStatus = userStatus;
     }
 
-    public Techstack getTechstack() {
-        return techstack;
-    }
-
-    public void setTechstack(Techstack techstack) {
-        this.techstack = techstack;
-    }
 
     public String getInternalComments() {
         return internalComments;
@@ -208,6 +210,54 @@ public class CodeHubUser implements Serializable {
 
     public void setInternalComments(String internalComments) {
         this.internalComments = internalComments;
+    }
+
+    public String getCvPath() {
+        return cvPath;
+    }
+
+    public void setCvPath(String cvPath) {
+        this.cvPath = cvPath;
+    }
+
+    public String getAvatarPath() {
+        return avatarPath;
+    }
+
+    public void setAvatarPath(String avatarPath) {
+        this.avatarPath = avatarPath;
+    }
+
+    public String getLinkedinPath() {
+        return linkedinPath;
+    }
+
+    public void setLinkedinPath(String linkedinPath) {
+        this.linkedinPath = linkedinPath;
+    }
+
+    public String getStackOverflowPath() {
+        return stackOverflowPath;
+    }
+
+    public void setStackOverflowPath(String stackOverflowPath) {
+        this.stackOverflowPath = stackOverflowPath;
+    }
+
+    public String getGitPath() {
+        return gitPath;
+    }
+
+    public void setGitPath(String gitPath) {
+        this.gitPath = gitPath;
+    }
+
+    public Set<Techstack> getUserTechstack() {
+        return userTechstack;
+    }
+
+    public void setUserTechstack(Set<Techstack> userTechstack) {
+        this.userTechstack = userTechstack;
     }
 
     @Override
@@ -227,15 +277,19 @@ public class CodeHubUser implements Serializable {
                 Objects.equal(getDateCreated(), that.getDateCreated()) &&
                 Objects.equal(getLatestLogin(), that.getLatestLogin()) &&
                 Objects.equal(getPhoneNumber(), that.getPhoneNumber()) &&
-                Objects.equal(getUserProfile(), that.getUserProfile()) &&
                 Objects.equal(getUserStatus(), that.getUserStatus()) &&
-                Objects.equal(getTechstack(), that.getTechstack()) &&
-                Objects.equal(getInternalComments(), that.getInternalComments());
+                Objects.equal(getInternalComments(), that.getInternalComments()) &&
+                Objects.equal(getCvPath(), that.getCvPath()) &&
+                Objects.equal(getAvatarPath(), that.getAvatarPath()) &&
+                Objects.equal(getLinkedinPath(), that.getLinkedinPath()) &&
+                Objects.equal(getStackOverflowPath(), that.getStackOverflowPath()) &&
+                Objects.equal(getGitPath(), that.getGitPath()) &&
+                Objects.equal(userTechstack, that.userTechstack);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId(), getEmail(), getUsername(), getPassword(), getRole(), getFirstName(), getLastName(), getCountry(), isActive, getDateCreated(), getLatestLogin(), getPhoneNumber(), getUserProfile(), getUserStatus(), getTechstack(), getInternalComments());
+        return Objects.hashCode(getId(), getEmail(), getUsername(), getPassword(), getRole(), getFirstName(), getLastName(), getCountry(), isActive, getDateCreated(), getLatestLogin(), getPhoneNumber(), getUserStatus(), getInternalComments(), getCvPath(), getAvatarPath(), getLinkedinPath(), getStackOverflowPath(), getGitPath(), userTechstack);
     }
 
     @Override
@@ -253,10 +307,14 @@ public class CodeHubUser implements Serializable {
                 ", dateCreated=" + dateCreated +
                 ", latestLogin=" + latestLogin +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", userProfile=" + userProfile +
                 ", userStatus=" + userStatus +
-                ", techstack=" + techstack +
                 ", internalComments='" + internalComments + '\'' +
+                ", cvPath='" + cvPath + '\'' +
+                ", avatarPath='" + avatarPath + '\'' +
+                ", linkedinPath='" + linkedinPath + '\'' +
+                ", stackOverflowPath='" + stackOverflowPath + '\'' +
+                ", gitPath='" + gitPath + '\'' +
+                ", userTechstack=" + userTechstack +
                 '}';
     }
 }
