@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         @Override
         public void configure(WebSecurity web) throws Exception {
             web.ignoring()
-                    .antMatchers("/css/**", "/js/**", "/img/**", "/fonts/**", "/external/**");
+                    .antMatchers("/css/**", "/js/**", "/img/**", "/fonts/**", "/api/**");
         }
 
         //TODO: REVIEW PATHS WHEN FRONT-END WILL BE ADDED
@@ -40,29 +40,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .authorizeRequests()
                     .antMatchers("/index.html", "/", "/home", "/login").permitAll()
                     .anyRequest().permitAll();
-//            httpSecurity
-//                    .authorizeRequests()
-//                    .antMatchers("/register/**", "/forgotPassword").permitAll()
-//                    .antMatchers("/views/admin.html").access("hasAuthority('admin')")
-//                    .antMatchers("/views/opadmin.html").access("hasAuthority('opadmin')")
-//                    .antMatchers("/views/dealer.html").access("hasAuthority('user')")
-//                    .anyRequest().authenticated()
-//                    .and()
-//                    .formLogin()
-//                    .loginPage("/index.html")
-//                    .permitAll()
-//                    //TODO SUCCESSHANDLER ?
-//                    //.successHandler(customSuccessHandler)
-//                    .failureUrl("/index.html?error")
-//                    .and()
-//                    .logout()
-//                    .logoutSuccessUrl("/index.html?logout")
-//                    .permitAll()
-//                    .and()
-//                    //TODO FAILURE HANDLERS?
-//                    //.exceptionHandling().accessDeniedHandler(accessDeniedHandler)
-//                    //.and() //TODO ADD CSRF PROTECTION
-//                    .csrf().disable();
         }
 
         protected void configure(AuthenticationManagerBuilder auth) {

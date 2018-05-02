@@ -1,5 +1,5 @@
-INSERT INTO role (name) VALUES ('admin');
-INSERT INTO role (name) VALUES ('user');
+INSERT INTO role (name) VALUES ('internal');
+INSERT INTO role (name) VALUES ('candidate');
 
 INSERT INTO techstack(stack) VALUES ('J2EE');
 INSERT INTO techstack(stack) VALUES ('.NET');

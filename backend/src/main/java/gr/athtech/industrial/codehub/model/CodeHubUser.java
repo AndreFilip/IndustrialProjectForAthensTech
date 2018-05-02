@@ -110,9 +110,9 @@ public class CodeHubUser implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     public String getEmail() {
         return email;
@@ -330,8 +330,8 @@ public class CodeHubUser implements Serializable {
                 ", linkedinPath='" + linkedinPath + '\'' +
                 ", stackOverflowPath='" + stackOverflowPath + '\'' +
                 ", gitPath='" + gitPath + '\'' +
-                ", userTechstack=" + userTechstack +
-                ", jobPosts=" + jobPosts +
+//                ", userTechstack=" + userTechstack +
+//                ", jobPosts=" + jobPosts +
                 '}';
     }
 }

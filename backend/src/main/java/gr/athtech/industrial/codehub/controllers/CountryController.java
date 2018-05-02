@@ -1,7 +1,7 @@
 package gr.athtech.industrial.codehub.controllers;
 
 import gr.athtech.industrial.codehub.model.Country;
-import gr.athtech.industrial.codehub.repositories.CountryRepo;
+import gr.athtech.industrial.codehub.repositories.CountryRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,19 +22,19 @@ public class CountryController {
     private static final Logger log = LoggerFactory.getLogger(CountryController.class);
 
     @Autowired
-    private CountryRepo countryRepo;
+    private CountryRepository countryRepository;
 
     @GetMapping(path = "/getByIsoCode/{isoCode}")
     public ResponseEntity<Country> getCountryByIsoCode(@PathVariable String isoCode) {
-        Country country = countryRepo.findCountryByIsoCode(isoCode);
+        Country country = countryRepository.findCountryByIsoCode(isoCode);
         return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(country);
     }
 
     @GetMapping(path = "/getAll")
     public ResponseEntity<List<Country>> getCountries() {
         List<Country> countries = new ArrayList<>();
-        if(countryRepo.findAll() != null) {
-            for(Country c: countryRepo.findAll()) {
+        if(countryRepository.findAll() != null) {
+            for(Country c: countryRepository.findAll()) {
                 countries.add(c);
             }
         }

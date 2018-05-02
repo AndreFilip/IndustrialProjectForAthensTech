@@ -1,5 +1,7 @@
 package gr.athtech.industrial.codehub.RepositoryTests;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import gr.athtech.industrial.codehub.model.CodeHubUser;
 import gr.athtech.industrial.codehub.model.Role;
 import gr.athtech.industrial.codehub.model.Techstack;
@@ -60,6 +62,17 @@ public class CodeHubUserRepoTest {
         }
     }
 
+    @Test
+    public void produceCodeHubUserJSON(){
+        ObjectMapper mapper = new ObjectMapper();
+        CodeHubUser codeHubUser = userRepository.findUserByUsername("user0");
+        try {
+            String jsonString = mapper.writeValueAsString(codeHubUser);
+            log.info("JSON OF USER : {}", jsonString);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
     @After
     public void tearDown(){
 

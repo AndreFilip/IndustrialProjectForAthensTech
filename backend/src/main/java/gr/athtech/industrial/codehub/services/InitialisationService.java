@@ -3,7 +3,7 @@ package gr.athtech.industrial.codehub.services;
 import gr.athtech.industrial.codehub.model.CodeHubUser;
 import gr.athtech.industrial.codehub.model.Country;
 import gr.athtech.industrial.codehub.model.Role;
-import gr.athtech.industrial.codehub.repositories.CountryRepo;
+import gr.athtech.industrial.codehub.repositories.CountryRepository;
 import gr.athtech.industrial.codehub.repositories.RoleRepository;
 import gr.athtech.industrial.codehub.repositories.UserRepository;
 import org.slf4j.Logger;
@@ -17,7 +17,6 @@ import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -36,7 +35,7 @@ public class InitialisationService implements ApplicationListener<ApplicationRea
     @Autowired
     RoleRepository roleRepository;
     @Autowired
-    CountryRepo countryRepository;
+    CountryRepository countryRepository;
 
     @Value("${default.admin.email}")
     String defaultAdminEmail;
@@ -53,7 +52,7 @@ public class InitialisationService implements ApplicationListener<ApplicationRea
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
-        Role role = roleRepository.findRoleByName("admin");
+        Role role = roleRepository.findRoleByName("internal");
         Country country = countryRepository.findCountryByIsoCode("GR");
         Date creationDate = new Date();
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -76,9 +75,9 @@ public class InitialisationService implements ApplicationListener<ApplicationRea
             admin.setLatestLogin(creationDate);
             userRepository.save(admin);
         }
-        role = roleRepository.findRoleByName("user");
+        role = roleRepository.findRoleByName("candidate");
         if(userRepository.findCodeHubUserByRole(role).size() == 0) {
-            log.info("There are no users registered yet!Initialising a user");
+            log.info("There are no candidate users registered yet!Initialising a user");
             CodeHubUser user = new CodeHubUser();
             user.setFirstName("User");
             user.setLastName("Useridis");

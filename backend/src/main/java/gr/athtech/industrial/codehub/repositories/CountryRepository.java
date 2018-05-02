@@ -7,7 +7,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  *
  * @author George Lalas
  */
-public interface CountryRepo extends PagingAndSortingRepository<Country, Long> {
+public interface CountryRepository extends PagingAndSortingRepository<Country, Long> {
 
     Country findCountryByIsoCode(String isoCode);
 
