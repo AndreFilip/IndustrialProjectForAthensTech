@@ -1,5 +1,6 @@
 package gr.athtech.industrial.codehub.controllers;
 
+import gr.athtech.industrial.codehub.model.CodeHubUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.CacheControl;
@@ -18,10 +19,10 @@ public class UserController {
 
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
-//    @PostMapping(path = "/apply/{language}")
-//    public ResponseEntity<String> submitApplication(@RequestPart("files[]") MultipartFile[] uploadFiles,
-//                                                    @RequestPart("application") CypApplication application,
-//                                                    HttpSession session) {
-//        return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body("Application received successfully!");
-//    }
+    @PostMapping(path = "/register}")
+    public ResponseEntity<String> submitApplication(@RequestPart("files[]") MultipartFile[] uploadFiles,
+                                                    @RequestPart("application") CodeHubUser user) {
+        log.info("JSON RECEIVED: {}", user.toString());
+        return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body("Registration Completed");
+    }
 }
