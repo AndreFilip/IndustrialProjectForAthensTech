@@ -6,7 +6,15 @@ DROP TABLE IF EXISTS user_status;
 DROP TABLE IF EXISTS role;
 DROP TABLE IF EXISTS country;
 DROP TABLE IF EXISTS job_posts;
+DROP TABLE IF EXISTS status;
 
+
+CREATE TABLE  status(
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  name VARCHAR(128) UNIQUE  NOT NULL ,
+  PRIMARY KEY (id)
+)
+ENGINE = InnoDB;
 
 
 CREATE TABLE  role(
@@ -36,7 +44,16 @@ CREATE TABLE IF NOT EXISTS user_status (
   stage VARCHAR(128) NULL,
   timestamp TIMESTAMP NULL,
   changedBy VARCHAR(128) NULL,
-  PRIMARY KEY (id))
+  statusId BIGINT UNSIGNED NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (statusId) REFERENCES status (id),
+  
+  INDEX status_id_idx (statusId ASC),
+  CONSTRAINT status_id
+  FOREIGN KEY (statusId)
+  REFERENCES status (id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
   ENGINE = InnoDB;
 
 
