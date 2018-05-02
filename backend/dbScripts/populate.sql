@@ -1,6 +1,14 @@
 INSERT INTO role (name) VALUES ('internal');
 INSERT INTO role (name) VALUES ('candidate');
 
+INSERT INTO status (name) VALUES ('Phone Interest');
+INSERT INTO status (name) VALUES ('Send Info');
+INSERT INTO status (name) VALUES ('Interview');
+INSERT INTO status (name) VALUES ('Not Interested');
+INSERT INTO status (name) VALUES ('Send Client');
+INSERT INTO status (name) VALUES ('Rejected');
+INSERT INTO status (name) VALUES ('Hired');
+
 INSERT INTO techstack(stack) VALUES ('J2EE');
 INSERT INTO techstack(stack) VALUES ('.NET');
 INSERT INTO techstack(stack) VALUES ('Angular5');
