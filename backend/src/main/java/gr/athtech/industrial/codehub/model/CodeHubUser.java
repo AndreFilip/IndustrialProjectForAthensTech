@@ -38,7 +38,8 @@ public class CodeHubUser implements Serializable {
     @Column(name = "lastName", nullable = false)
     private String lastName;
 
-    @Column(name = "countryId", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "countryId", nullable = false)
     private Country country;
 
     @Column(name = "isActive", nullable = false)
@@ -56,7 +57,7 @@ public class CodeHubUser implements Serializable {
     @Column(name = "userProfileId")
     private UserProfile userProfile;
 
-    @Column(name = "userStatus")
+    @Column(name = "userStatusId")
     private UserStatus userStatus;
 
     @Column(name = "techstackId")

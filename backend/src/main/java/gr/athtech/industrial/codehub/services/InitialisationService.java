@@ -1,7 +1,9 @@
 package gr.athtech.industrial.codehub.services;
 
 import gr.athtech.industrial.codehub.model.CodeHubUser;
+import gr.athtech.industrial.codehub.model.Country;
 import gr.athtech.industrial.codehub.model.Role;
+import gr.athtech.industrial.codehub.repositories.CountryRepo;
 import gr.athtech.industrial.codehub.repositories.RoleRepository;
 import gr.athtech.industrial.codehub.repositories.UserRepository;
 import org.slf4j.Logger;
@@ -13,6 +15,10 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,6 +35,8 @@ public class InitialisationService implements ApplicationListener<ApplicationRea
     PasswordEncoder passwordEncoder;
     @Autowired
     RoleRepository roleRepository;
+    @Autowired
+    CountryRepo countryRepository;
 
     @Value("${default.admin.email}")
     String defaultAdminEmail;
@@ -46,8 +54,12 @@ public class InitialisationService implements ApplicationListener<ApplicationRea
     @Override
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
         Role role = roleRepository.findRoleByName("admin");
+        Country country = countryRepository.findCountryByIsoCode("GR");
+        Date creationDate = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         log.info("******InitialisationService Started******");
         log.info("****Populating Database with Admin and user!******");
+        log.info("***CREATION DATE : {}", dateFormat.format(creationDate));
         List<CodeHubUser> admins = userRepository.findCodeHubUserByRole(role);
         if (admins == null || admins.size() == 0) {
             // No admin user, create default
@@ -58,6 +70,10 @@ public class InitialisationService implements ApplicationListener<ApplicationRea
             admin.setEmail(defaultAdminEmail);
             admin.setPassword(passwordEncoder.encode(defaultAdminPassword));
             admin.setRole(role);
+            admin.setCountry(country);
+            admin.setDateCreated(creationDate);
+            admin.setActive(true);
+            admin.setLatestLogin(creationDate);
             userRepository.save(admin);
         }
         role = roleRepository.findRoleByName("user");
@@ -70,6 +86,10 @@ public class InitialisationService implements ApplicationListener<ApplicationRea
             user.setPassword(passwordEncoder.encode(defaultUser0Username));
             user.setEmail(defaultUser0email);
             user.setRole(role);
+            user.setCountry(country);
+            user.setDateCreated(creationDate);
+            user.setActive(true);
+            user.setLatestLogin(creationDate);
             userRepository.save(user);
         }
         log.info("******InitialisationService Ended******");
