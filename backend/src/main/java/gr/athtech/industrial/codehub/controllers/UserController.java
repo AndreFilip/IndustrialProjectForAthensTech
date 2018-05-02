@@ -34,20 +34,21 @@ public class UserController {
     @Autowired
     private CodeHubUserDetailsService codeHubUserDetailsService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(path = "/register")
     public ResponseEntity<String> submitRegistration(@RequestBody User user) {
-        log.debug("JSON RECEIVED: {}", user.toString());
+        log.info("JSON RECEIVED: {}", user.toString());
         log.debug("ROLE : {} ", user.getRoleName());
         log.debug("COUNTRY : {}", user.getCountryIsoCode());
         CodeHubUser userToSave = new CodeHubUser();
         userToSave.setEmail(user.getEmail());
-        userToSave.setUsername(user.getUsername());
+        userToSave.setUsername(user.getEmail());
         userToSave.setPassword(user.getPassword());
         userToSave.setRole(roleRepository.findRoleByName(user.getRoleName()));
         userToSave.setFirstName(user.getFirstName());
         userToSave.setLastName(user.getLastName());
         userToSave.setCountry(countryRepository.findCountryByIsoCode(user.getCountryIsoCode()));
-        userToSave.setActive(user.getActive());
+        userToSave.setActive(true);
         userToSave.setDateCreated(new Date());
         userToSave.setLatestLogin(new Date());
         if(codeHubUserDetailsService.saveUser(userToSave, user.getRoleName()) == 0){
