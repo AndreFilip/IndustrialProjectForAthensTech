@@ -17,7 +17,9 @@ public class UserStatus implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "userId")
+    @ManyToOne
+    @JoinColumn(name = "userId", nullable = false)
+//    @Column(name = "userId")
     private CodeHubUser codeHubUser;
 
     @Column(name = "stage")
@@ -30,5 +32,56 @@ public class UserStatus implements Serializable {
     private String changedBy;
 
     public UserStatus() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public CodeHubUser getCodeHubUser() {
+        return codeHubUser;
+    }
+
+    public void setCodeHubUser(CodeHubUser codeHubUser) {
+        this.codeHubUser = codeHubUser;
+    }
+
+    public String getStage() {
+        return stage;
+    }
+
+    public void setStage(String stage) {
+        this.stage = stage;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getChangedBy() {
+        return changedBy;
+    }
+
+    public void setChangedBy(String changedBy) {
+        this.changedBy = changedBy;
+    }
+
+    @Override
+    public String toString() {
+        return "UserStatus{" +
+                "id=" + id +
+                ", codeHubUser=" + codeHubUser +
+                ", stage='" + stage + '\'' +
+                ", timestamp=" + timestamp +
+                ", changedBy='" + changedBy + '\'' +
+                '}';
     }
 }

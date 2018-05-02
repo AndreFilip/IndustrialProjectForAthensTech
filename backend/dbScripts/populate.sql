@@ -1,6 +1,10 @@
 INSERT INTO role (name) VALUES ('admin');
 INSERT INTO role (name) VALUES ('user');
 
+INSERT INTO techstack(stack) VALUES ('J2EE');
+INSERT INTO techstack(stack) VALUES ('.NET');
+INSERT INTO techstack(stack) VALUES ('Angular5');
+
 
 INSERT INTO country (id, isocode, namecapital, nameview, isocode3, numcode, phonecode) VALUES
   (1, 'AF', 'AFGHANISTAN', 'Afghanistan', 'AFG', 4, 93),
