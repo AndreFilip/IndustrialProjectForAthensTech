@@ -1,0 +1,23 @@
+ul {
+    list-style-type: none;
+
+}
+
+a {
+  color: black;
+  text-decoration: none ;
+}
+
+.grey {
+    background-color: #e9ecef;
+}
+
+form {
+    width: 20%;
+   
+}
+
+form button {
+    width:100%;
+    transform: translateX(-23%);
+}

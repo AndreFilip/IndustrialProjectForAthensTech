@@ -6,9 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./team.component.css']
 })
 export class TeamComponent implements OnInit {
+  velkos: string;
+  nikolako: string;
 
-  constructor() { }
 
+  constructor() {
+
+    this.velkos = '/assets/images/velkos.jpg'
+    this.nikolako = '/assets/images/nikolako.png'
+
+   }
   ngOnInit() {
   }
 
