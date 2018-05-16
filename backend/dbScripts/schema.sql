@@ -140,6 +140,9 @@ CREATE TABLE IF NOT EXISTS job_posts (
   location VARCHAR(128) NULL,
   dateCreated DATE NOT NULL,
   jobDescription TEXT NULL,
+  companyDescription TEXT NULL,
+  qualifications TEXT NULL,
+  companyLogo TEXT NULL,
   PRIMARY KEY (id))
   ENGINE = InnoDB;
 

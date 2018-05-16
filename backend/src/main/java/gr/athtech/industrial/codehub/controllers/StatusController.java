@@ -35,7 +35,7 @@ public class StatusController {
         return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(statuses);
     }
     @GetMapping(path = "/getStatusByName/{statusName}")
-    public ResponseEntity<Status> getCountryByIsoCode(@PathVariable String statusName) {
+    public ResponseEntity<Status> getStatusByName(@PathVariable String statusName) {
         Status status = statusRepository.findStatusByName(statusName);
         return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(status);
     }

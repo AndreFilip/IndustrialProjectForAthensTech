@@ -33,6 +33,15 @@ public class JobPosts implements Serializable {
     @Column(name = "jobDescription")
     private String description;
 
+    @Column(name = "companyDescription")
+    private String companyDescription;
+    
+    @Column(name = "qualifications")
+    private String qualifications;
+    
+    @Column(name = "companyLogo")
+    private String companyLogo;
+    
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "jobPosts")
     private Set<CodeHubUser> users;
@@ -47,7 +56,21 @@ public class JobPosts implements Serializable {
         this.description = description;
     }
 
-    public Long getId() {
+    
+    
+    public JobPosts(String jobTitle, String location, Date dateCreated, String description, String companyDescription,
+			String qualifications, String companyLogo) {
+		super();
+		this.jobTitle = jobTitle;
+		this.location = location;
+		this.dateCreated = dateCreated;
+		this.description = description;
+		this.companyDescription = companyDescription;
+		this.qualifications = qualifications;
+		this.companyLogo = companyLogo;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -94,8 +117,34 @@ public class JobPosts implements Serializable {
     public void setUsers(Set<CodeHubUser> users) {
         this.users = users;
     }
+    
+    
 
-    @Override
+    public String getCompanyDescription() {
+		return companyDescription;
+	}
+
+	public void setCompanyDescription(String companyDescription) {
+		this.companyDescription = companyDescription;
+	}
+
+	public String getQualifications() {
+		return qualifications;
+	}
+
+	public void setQualifications(String qualifications) {
+		this.qualifications = qualifications;
+	}
+
+	public String getCompanyLogo() {
+		return companyLogo;
+	}
+
+	public void setCompanyLogo(String companyLogo) {
+		this.companyLogo = companyLogo;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof JobPosts)) return false;
@@ -105,23 +154,23 @@ public class JobPosts implements Serializable {
                 Objects.equal(getLocation(), jobPosts.getLocation()) &&
                 Objects.equal(getDateCreated(), jobPosts.getDateCreated()) &&
                 Objects.equal(getDescription(), jobPosts.getDescription()) &&
+                Objects.equal(getDescription(), jobPosts.getCompanyDescription()) &&
+                Objects.equal(getDescription(), jobPosts.getQualifications()) &&
+                Objects.equal(getDescription(), jobPosts.getCompanyLogo()) &&
                 Objects.equal(getUsers(), jobPosts.getUsers());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId(), getJobTitle(), getLocation(), getDateCreated(), getDescription());
+        return Objects.hashCode(getId(), getJobTitle(), getLocation(), getDateCreated(), getDescription(), getCompanyDescription(), getQualifications(), getCompanyLogo());
     }
 
-    @Override
-    public String toString() {
-        return "JobPosts{" +
-                "id=" + id +
-                ", jobTitle='" + jobTitle + '\'' +
-                ", location='" + location + '\'' +
-                ", dateCreated=" + dateCreated +
-                ", description='" + description + '\'' +
-//                ", users=" + users +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "JobPosts [id=" + id + ", jobTitle=" + jobTitle + ", location=" + location + ", dateCreated="
+				+ dateCreated + ", description=" + description + ", companyDescription=" + companyDescription
+				+ ", qualifications=" + qualifications + ", companyLogo=" + companyLogo + "]";
+	}
+
+    
 }
