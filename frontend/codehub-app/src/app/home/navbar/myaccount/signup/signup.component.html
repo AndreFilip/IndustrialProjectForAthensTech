@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="jumbotron">
-        <h2 class="page-title text-center">Sign Up</h2>
+        <h2 class="text-center">Sign Up</h2>
       </div>
     </div>
   </div>
@@ -31,35 +31,65 @@
                   required
                   ngModel
                   >
+                  <input
+                  type="text"
+                  placeholder="Username"
+                  name="username"
+                  class="form-control"
+                  style="margin-right:5px; margin-left:5px;"                  
+                  ngModel
+                  >
+                </div>
+                <br>
+                <div class="row">
+                    <div class="input-group input-group-lg col-6">
+                        <select multiple class="form-control" name="techStack" style="margin-right:0px; margin-left:0px;" required ngModel>
+                          <option value="java">Java</option>
+                          <option value="csharp">C#</option>
+                          <option value="cplusplus">C++</option>
+                          <option value="javascript">Javascript</option>
+                          <option value="net">.NET</option>
+                          <option value="vuejs">Vue.Js</option>
+                          <option value="angularjs">Angular.Js</option>
+                          <option value="spring">Spring</option>                          
+                        </select>
+                    </div>                    
+                    <div class="input-group input-group-lg col-6">
+                      <select id="country" name="country" class="form-control" style="margin-right:5px; margin-left:5px;" required ngModel>
+                        <option value="GR">Greece</option>
+                        <option value="AU">Australia</option>
+                        <option value="CA">Canada</option>
+                        <option value="US">USA</option>
+                      </select>                    
+                    </div>
+                
                 </div>
                 <br>
                 <div class="row">
                   <div class="input-group input-group-lg">
                     <input
                     type="text"
-                    placeholder="Tech Stack"
-                    name="techStack"
-                    class="form-control"
-                    style="margin-right:13px; margin-left:13px;"
-                    required
-                    ngModel
-                    >
-                  </div>
-                </div>
-                <br>
-                <div class="row">
-                  <div class="input-group input-group-lg">
-                    <input
-                    type="text"
-                    placeholder="LinkedIn Stackoverflow GitHub"
+                    placeholder="LinkedIn/Stackoverflow/GitHub"
                     name="profileLink"
                     class="form-control"
-                    style="margin-right:13px; margin-left:13px;"
-                    required
+                    style="margin-right:13px; margin-left:13px;"                    
                     ngModel
-                    >
+                    >                    
                   </div>
                 </div>
+                <br>
+                <div class="row">
+                    <label for="file">Upload your CV</label>
+                    <input
+                    id="file"
+                    type="file"
+                    name="file"
+                    class="form-control"
+                    style="margin-right:13px; margin-left:13px; border: none;"                    
+                    ngModel
+                    >
+                    
+                </div>               
                 <br>
                 <div class="row">
                   <div class="input-group input-group-lg">

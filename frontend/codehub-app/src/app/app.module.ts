@@ -21,6 +21,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { InstructorsComponent } from './home/navbar/learn/instructors/instructors.component';
 import { HttpClientModule }    from '@angular/common/http';
 import {UserService} from "./user.service";
+import { AdminComponent } from './home/navbar/admin/admin.component';
+import { JobPostsComponent } from './home/navbar/admin/job-posts/job-posts.component';
+import { ApplicantsComponent } from './home/navbar/admin/applicants/applicants.component';
+import { MyprofileComponent } from './home/navbar/myaccount/myprofile/myprofile.component';
 
 
 @NgModule({
@@ -39,7 +43,11 @@ import {UserService} from "./user.service";
     LoginComponent,
     SignupComponent,
     ContactUsComponent,
-    InstructorsComponent
+    InstructorsComponent,
+    AdminComponent,
+    JobPostsComponent,
+    ApplicantsComponent,
+    MyprofileComponent
   ],
   imports: [
     BrowserModule,
@@ -47,9 +55,10 @@ import {UserService} from "./user.service";
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule
-
   ],
-  providers: [UserService],
+  providers: [UserService,
+    MyprofileComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

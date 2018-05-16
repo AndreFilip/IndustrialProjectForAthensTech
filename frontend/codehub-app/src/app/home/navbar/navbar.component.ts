@@ -6,11 +6,14 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  logo: String;
 
   @Input() doLoginStatus: boolean;
   @Output() doLogin = new EventEmitter;
 
-  constructor() { }
+  constructor() {    
+    this.logo = '/assets/images/logo.png'
+   }
 
   ngOnInit() {
   }
