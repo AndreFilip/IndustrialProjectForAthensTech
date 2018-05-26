@@ -1,5 +1,6 @@
 package gr.athtech.industrial.codehub.RepositoryTests;
 
+import gr.athtech.industrial.codehub.model.Role;
 import gr.athtech.industrial.codehub.model.Status;
 import gr.athtech.industrial.codehub.repositories.StatusRepository;
 import org.junit.After;
@@ -38,9 +39,14 @@ public class StatusRepoTest {
             //capturing any exception...
             log.info("Something went wrong : {}", e.getMessage());
         }
-
-
+        
     }
+    
+    @Test
+    public void getStatusByNameTest() {
+    	Status status = statusRepository.findStatusByName("Interview");
+    	log.info("Status : {}", status.toString());
+	}
 
     @After
     public void tearDown(){

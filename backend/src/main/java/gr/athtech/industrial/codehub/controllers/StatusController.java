@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class StatusController {
     @Autowired
     private StatusRepository statusRepository;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(path = "/getAll")
     public ResponseEntity<List<Status>> getStatuses() {
         List<Status> statuses = new ArrayList<>();
@@ -34,9 +36,11 @@ public class StatusController {
         }
         return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(statuses);
     }
-    @GetMapping(path = "/getStatusByName/{statusName}")
-    public ResponseEntity<Status> getStatusByName(@PathVariable String statusName) {
-        Status status = statusRepository.findStatusByName(statusName);
+    
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(path = "/getStatusByName/{name}")
+    public ResponseEntity<Status> getStatusByName(@PathVariable String name) {
+        Status status = statusRepository.findStatusByName(name);
         return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(status);
     }
 }
