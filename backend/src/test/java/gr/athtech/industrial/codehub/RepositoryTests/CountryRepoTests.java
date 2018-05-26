@@ -23,11 +23,11 @@ public class CountryRepoTests {
 	 private static final Logger log = LoggerFactory.getLogger(CodeHubUserRepoTest.class);
 
 	 @Autowired
-	    private CountryRepository countryRepository;
-	    @Autowired
-	    private CodeHubUserDetailsService codeHubUserDetailsService;
-	    @Autowired
-	    private UserRepository userRepository;
+	 private CountryRepository countryRepository;
+	 @Autowired
+	 private CodeHubUserDetailsService codeHubUserDetailsService;
+	 @Autowired
+	 private UserRepository userRepository;
 
 	    @Test
 	    public void getCountryByIsoCodeTest(){

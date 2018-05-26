@@ -6,6 +6,9 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 /**
  *
  * @author George Lalas
+ * @edit Panagiotis Kourempanas
  */
 public interface TechstackRepository extends PagingAndSortingRepository<Techstack, Long> {
+
+	Techstack findTechstackByStack(String stack);
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -31,6 +32,7 @@ public class TechStackController {
     @Autowired
     private UserRepository userRepository;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(path = "/getAll")
     public ResponseEntity<List<Techstack>> getTechStacks() {
         List<Techstack> techstacks = new ArrayList<>();
@@ -40,7 +42,15 @@ public class TechStackController {
             log.debug("TECHSTACK LIST : {}", techstacks.toString());
         return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(techstacks);
     }
+    
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(path = "/getByStack/{stack}")
+    public ResponseEntity<Techstack> getTechstackByStack(@PathVariable String stack) {
+    	Techstack techstack = techstackRepository.findTechstackByStack(stack);
+    	return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(techstack);
+    }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(path = "/getStackOfUser/{username}")
     public ResponseEntity<Set<Techstack>> getTechStackForUser(@PathVariable("username") String username){
         CodeHubUser codeHubUser = userRepository.findUserByUsername(username);

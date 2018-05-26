@@ -1,6 +1,5 @@
 package gr.athtech.industrial.codehub.RepositoryTests;
 
-import gr.athtech.industrial.codehub.model.Role;
 import gr.athtech.industrial.codehub.model.Status;
 import gr.athtech.industrial.codehub.repositories.StatusRepository;
 import org.junit.After;
