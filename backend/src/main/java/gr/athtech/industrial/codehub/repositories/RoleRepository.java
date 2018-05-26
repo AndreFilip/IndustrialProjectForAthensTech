@@ -6,6 +6,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 /**
  *
  * @author George Lalas
+ * @edit Panagiotis Kourempanas
  */
 public interface RoleRepository extends PagingAndSortingRepository<Role, Long> {
 

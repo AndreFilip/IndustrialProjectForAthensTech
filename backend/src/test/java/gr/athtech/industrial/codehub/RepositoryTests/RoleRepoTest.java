@@ -38,9 +38,12 @@ public class RoleRepoTest {
             //capturing any exception...
             log.info("Something went wrong : {}", e.getMessage());
         }
-
-
     }
+        @Test
+        public void getRoleByNameTest() {
+        	Role role = roleRepository.findRoleByName("internal");
+        	log.info("Role : {}", role.toString());
+    	}
 
     @After
     public void tearDown(){

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class RoleController {
     @Autowired
     private RoleRepository roleRepository;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(path = "/getAll")
     public ResponseEntity<List<Role>> getRoles() {
         List<Role> roles = new ArrayList<>();
@@ -35,9 +37,10 @@ public class RoleController {
         return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(roles);
     }
 
-    @GetMapping(path = "/getRoleByName/{roleName}")
-    public ResponseEntity<Role> getCountryByIsoCode(@PathVariable String roleName) {
-        Role role = roleRepository.findRoleByName(roleName);
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(path = "/getRoleByName/{name}")
+    public ResponseEntity<Role> getRoleByName(@PathVariable String name) {
+        Role role = roleRepository.findRoleByName(name);
         return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(role);
     }
 }
