@@ -20,4 +20,5 @@ List<JobPosts> findJobPostsByLocation(String location);
 List<JobPosts> findJobPostsByQualifications(String qualifications);
 List<JobPosts> findJobPostsByDateCreated(Date dateCreated);
 List<JobPosts> findJobPostsByCompanyTitle(String CompanyTitle);
+
 }

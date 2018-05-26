@@ -191,7 +191,7 @@ public class JobPosts implements Serializable {
 	@Override
 	public String toString() {
 		return "JobPosts [id=" + id + ", jobTitle=" + jobTitle + ", location=" + location + ", dateCreated="
-				+ dateCreated + ", description=" + description + ", companyLogo=" + companyLogo + ", companyDescription=" + companyDescription
+				+ dateCreated + ", description=" + description + ", companyTitle=" + companyTitle + ", companyDescription=" + companyDescription
 				+ ", qualifications=" + qualifications + ", companyLogo=" + companyLogo + "]";
 	}
 
