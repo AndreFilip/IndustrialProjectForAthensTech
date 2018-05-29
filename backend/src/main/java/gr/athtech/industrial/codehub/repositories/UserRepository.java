@@ -18,7 +18,4 @@ public interface UserRepository extends PagingAndSortingRepository<CodeHubUser, 
 
     CodeHubUser findUserByUsername(String username);
 
-    CodeHubUser findCodeHubUserBy(String email);
-
-
 }

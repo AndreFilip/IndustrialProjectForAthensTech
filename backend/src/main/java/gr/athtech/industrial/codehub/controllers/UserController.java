@@ -67,7 +67,7 @@ public class UserController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(path = "/getUserByEmai/{email}")
-    public ResponseEntity<CodeHubUser> getUserbyEmail(@PathVariable String email) {
+    public ResponseEntity<CodeHubUser> getUserByEmail(@PathVariable String email) {
        CodeHubUser user = userRepository.findUserByEmail(email);
        return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(user);
     }
