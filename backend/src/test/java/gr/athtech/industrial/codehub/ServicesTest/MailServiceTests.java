@@ -19,7 +19,7 @@ import java.util.List;
 @SpringBootTest
 public class MailServiceTests {
 
-    private static final Logger log = LoggerFactory.getLogger(CodeHubUserRepoTest.class);
+    private static final Logger log = LoggerFactory.getLogger(MailServiceTests.class);
 
     @Autowired
     private MailService mailService;
