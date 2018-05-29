@@ -28,16 +28,16 @@ public class JobPostsTests {
     private UserRepository userRepository;
 
 
-    @Test
-    public void createNewJobPost(){
-        JobPosts jobPost = new JobPosts("New Test Job Title", "DEMO LOCATION","TEST DESCRIPTION!");
-        jobPostsRepository.save(jobPost);
-    }
-
-    @Test
-    public void assignUserForJobPostTest(){
-        JobPosts jobPosts = jobPostsRepository.findById(1l).get();
-        CodeHubUser codeHubUser = userRepository.findUserByUsername("user0");
-        codeHubUserDetailsService.assignJobPostsToUser(jobPosts, codeHubUser);
-    }
+//    @Test
+//    public void createNewJobPost(){
+//        JobPosts jobPost = new JobPosts("New Test Job Title", "DEMO LOCATION","TEST DESCRIPTION!");
+//        jobPostsRepository.save(jobPost);
+//    }
+//
+//    @Test
+//    public void assignUserForJobPostTest(){
+//        JobPosts jobPosts = jobPostsRepository.findById(1l).get();
+//        CodeHubUser codeHubUser = userRepository.findUserByUsername("user0");
+//        codeHubUserDetailsService.assignJobPostsToUser(jobPosts, codeHubUser);
+//    }
 }
