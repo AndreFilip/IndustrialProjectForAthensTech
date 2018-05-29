@@ -58,23 +58,19 @@ public class UserController {
         }
     }
 
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(path = "/getAll")
     public ResponseEntity<List<CodeHubUser>> getUsers() {
         List<CodeHubUser> userList = codeHubUserDetailsService.getUsers();
         return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(userList);
     }
 
-    //    @GetMapping(path = "/getAll")
-//    public ResponseEntity<List<User>> getUsers() {
-//        List<User> userList = new ArrayList<>();
-//        for(CodeHubUser c: userRepository.findAll()) {
-//            User user = new User(c.getEmail(), c.getUsername(), c.getPassword(), c.getRole().getName()
-//                    , c.getFirstName(), c.getLastName(), c.getCountry().getIsoCode(), c.getActive(), c.getDateCreated()
-//                    , c.getLatestLogin(), c.getPhoneNumber(), c.getUserStatus().getStage(), c.getInternalComments()
-//                    , c.getCvPath(), c.getAvatarPath(), c.getLinkedinPath(), c.getStackOverflowPath(), c.getGitPath());
-//            userList.add(user);
-//        }
-//        return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(userList);
-//    }
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(path = "/getUserByEmai/{email}")
+    public ResponseEntity<CodeHubUser> getUserbyEmail(@PathVariable String email) {
+       CodeHubUser user = userRepository.findUserByEmail(email);
+       return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(user);
+    }
+
+
 }
