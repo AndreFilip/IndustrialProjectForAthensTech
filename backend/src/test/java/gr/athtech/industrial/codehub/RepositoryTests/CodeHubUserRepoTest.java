@@ -18,6 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.Set;
@@ -56,12 +58,33 @@ public class CodeHubUserRepoTest {
     }
 
     @Test
-    public void getTeckstackList(){
+    public void getTechstackList(){
         for(Techstack t : techstackRepository.findAll()){
             log.info("TECHSTACK LIST : {}",t.toString());
         }
     }
 
+    @Test
+    public void getUserByEmailTest() {
+    	CodeHubUser codeHubUser = userRepository.findUserByEmail("user0@user0.gr");
+    	log.info("CODEHUB USER BY EMAIL : {}", codeHubUser.toString());
+    }
+    
+    @Test
+    public void getUserByUsernameTest() {
+    	CodeHubUser codeHubUser = userRepository.findUserByUsername("user0");
+    	log.info("CODEHUB USER BY USERNAME : {}", codeHubUser.toString());
+    }
+    
+    @Test
+    public void getUserByRoleTest() {
+    	Role role = roleRepository.findRoleByName("candidate");
+    	List<CodeHubUser> codeHubUsers = userRepository.findCodeHubUserByRole(role);
+    	for (CodeHubUser chu: codeHubUsers){
+    		log.info("USERS BY ROLE : {}", chu.toString());
+    	}
+    }
+    
     @Test
     public void produceCodeHubUserJSON(){
         ObjectMapper mapper = new ObjectMapper();
