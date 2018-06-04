@@ -1,14 +1,14 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js start
+  C:\Users\Αντρέας\git\codehub\frontend\node\node.exe C:\Users\Αντρέας\git\codehub\frontend\node\yarn\dist\bin\yarn.js build
 
 PATH: 
-  C:\oraclexe\app\oracle\product\11.2.0\server\bin;;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files\Java\jdk1.8.0_91\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\MySQL\MySQL Utilities 1.6\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;PythonPath;C:\Python27;C:\Python27\Scripts;C:\Program Files\PuTTY\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\TortoiseGit\bin;C:\Users\glalas-dev\AppData\Local\Microsoft\WindowsApps;C:\Users\glalas-dev\AppData\Roaming\npm;C:\Users\glalas-dev\AppData\Local\Yarn\bin
+  C:\Users\Αντρέας\git\codehub\frontend\node;C:\Users\Αντρέας\git\codehub\frontend\node\yarn\dist\bin;C:/Program Files/Java/jre1.8.0_171/bin/server;C:/Program Files/Java/jre1.8.0_171/bin;C:/Program Files/Java/jre1.8.0_171/lib/amd64;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Java\jdk1.8.0_121\bin;C:\Program Files\apache-maven-3.3.9\bin;C:\Program Files\Git\cmd;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\MySQL\MySQL Server 5.7\bin;C:\Program Files\MySQL\MySQL Utilities 1.6\;c:\aspectj1.8\lib\aspectjrt.jar;C:\aspectj1.8\bin;C:\Program Files\nodejs\;C:\wamp64\bin\php\php5.6.31;C:\ProgramData\ComposerSetup\bin;C:\wamp64\bin\php;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\WINDOWS\System32\OpenSSH\;C:\Users\Αντρέας\AppData\Local\Microsoft\WindowsApps;C:\Users\Αντρέας\AppData\Roaming\npm;C:\Users\Αντρέας\AppData\Roaming\Composer\vendor\bin;C:\Users\Αντρέας\AppData\Local\atom\bin;C:\Users\Αντρέας\AppData\Local\Yarn\bin;C:\Program Files\Microsoft VS Code\bin;C:\Users\Αντρέας\AppData\Local\Microsoft\WindowsApps;;C:\eclipse;;
 
 Yarn version: 
   1.5.1
 
 Node version: 
-  8.10.0
+  9.9.0
 
 Platform: 
   win32 x64
@@ -23,10 +23,10 @@ Lockfile:
   No lockfile
 
 Trace: 
-  Error: Couldn't find a package.json file in "C:\\Users\\glalas-dev\\Codes\\CodeHub\\codehub\\frontend"
-      at new MessageError (C:\Program Files (x86)\Yarn\lib\cli.js:186:110)
-      at C:\Program Files (x86)\Yarn\lib\cli.js:40048:15
+  Error: Couldn't find a package.json file in "C:\\Users\\Αντρέας\\git\\codehub\\frontend"
+      at new MessageError (C:\Users\Αντρέας\git\codehub\frontend\node\yarn\dist\lib\cli.js:186:110)
+      at C:\Users\Αντρέας\git\codehub\frontend\node\yarn\dist\lib\cli.js:40048:15
       at Generator.next (<anonymous>)
-      at step (C:\Program Files (x86)\Yarn\lib\cli.js:98:30)
-      at C:\Program Files (x86)\Yarn\lib\cli.js:109:13
+      at step (C:\Users\Αντρέας\git\codehub\frontend\node\yarn\dist\lib\cli.js:98:30)
+      at C:\Users\Αντρέας\git\codehub\frontend\node\yarn\dist\lib\cli.js:109:13
       at <anonymous>
