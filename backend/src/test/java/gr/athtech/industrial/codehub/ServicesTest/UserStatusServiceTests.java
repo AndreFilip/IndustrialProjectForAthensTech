@@ -31,8 +31,8 @@ public class UserStatusServiceTests {
     @Test
     public void userStatusChangeTest(){
         log.info("TESTING changeUserStatus()....");
-        CodeHubUser user = userRepository.findUserByUsername("user0");
-        userStatusService.changeUserStatus(user, "Stage3", "admin");
+//        CodeHubUser user = userRepository.findUserByUsername("user0");
+//        userStatusService.changeUserStatus(user, "Stage3", "admin");
 
     }
 
