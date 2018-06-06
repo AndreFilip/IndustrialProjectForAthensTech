@@ -79,11 +79,11 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>gr.athtech.industrial</groupId>
-            <artifactId>codehub-frontend</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>gr.athtech.industrial</groupId>-->
+            <!--<artifactId>codehub-frontend</artifactId>-->
+            <!--<version>${project.parent.version}</version>-->
+        <!--</dependency>-->
 
     </dependencies>
 
