@@ -29,11 +29,11 @@ public class MailServiceTests {
         log.info("Testing mailer service...");
         List<String> mailingList = new ArrayList<>();
         mailingList.add("glalas@athtech.gr");
-        mailingList.add("jnikolakopoulos@athtech.gr");
-        mailingList.add("etsiris@athtech.gr");
+//        mailingList.add("jnikolakopoulos@athtech.gr");
+//        mailingList.add("etsiris@athtech.gr");
         mailingList.add("pkourempanas@athtech.gr");
-        mailingList.add("amelkonis@athtech.gr");
-        mailingList.add("afilippatos@athtech.gr");
+//        mailingList.add("amelkonis@athtech.gr");
+//        mailingList.add("afilippatos@athtech.gr");
         for(String address : mailingList){
             log.info("Sending Test email to : {}", address);
             mailService.sendEmail(address,"CodeHub Platform email integration tests","This is an automated message from" +
