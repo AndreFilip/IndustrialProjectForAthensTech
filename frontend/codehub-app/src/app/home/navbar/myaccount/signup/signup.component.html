@@ -1,149 +1,58 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="jumbotron">
-        <h2 class="text-center">Sign Up</h2>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-    </div>
-      <div class="col-md-8">
-        <form (ngSubmit)="onRegisterUser(f)" #f="ngForm" >
-            <div class="list-group text-center">
-                <div class="input-group input-group-lg">
-                  <input
-                  type="text"
-                  placeholder="First Name"
-                  name="firstName"
-                  class="form-control"
-                  style="margin-right:5px;"
-                  required
-                  ngModel
-                  >
-                  <input
-                  type="text"
-                  placeholder="Last Name"
-                  name="lastName"
-                  class="form-control"
-                  style="margin-left:5px;"
-                  required
-                  ngModel
-                  >
-                  <input
-                  type="text"
-                  placeholder="Username"
-                  name="username"
-                  class="form-control"
-                  style="margin-right:5px; margin-left:5px;"                  
-                  ngModel
-                  >
-                </div>
-                <br>
-                <div class="row">
-                    <div class="input-group input-group-lg col-6">
-                        <select multiple class="form-control" name="techStack" style="margin-right:0px; margin-left:0px;" required ngModel>
-                          <option value="java">Java</option>
-                          <option value="csharp">C#</option>
-                          <option value="cplusplus">C++</option>
-                          <option value="javascript">Javascript</option>
-                          <option value="net">.NET</option>
-                          <option value="vuejs">Vue.Js</option>
-                          <option value="angularjs">Angular.Js</option>
-                          <option value="spring">Spring</option>                          
-                        </select>
-                    </div>                    
-                    <div class="input-group input-group-lg col-6">
-                      <select id="country" name="country" class="form-control" style="margin-right:5px; margin-left:5px;" required ngModel>
-                        <option value="GR">Greece</option>
-                        <option value="AU">Australia</option>
-                        <option value="CA">Canada</option>
-                        <option value="US">USA</option>
-                      </select>                    
-                    </div>
-                
-                </div>
-                <br>
-                <div class="row">
-                  <div class="input-group input-group-lg">
-                    <input
-                    type="text"
-                    placeholder="LinkedIn/Stackoverflow/GitHub"
-                    name="profileLink"
-                    class="form-control"
-                    style="margin-right:13px; margin-left:13px;"                    
-                    ngModel
-                    >                    
-                  </div>
-                </div>
-                <br>
-                <div class="row">
-                    <label for="file">Upload your CV</label>
-                    <input
-                    id="file"
-                    type="file"
-                    name="file"
-                    class="form-control"
-                    style="margin-right:13px; margin-left:13px; border: none;"                    
-                    ngModel
-                    >
-                    
-                </div>               
-                <br>
-                <div class="row">
-                  <div class="input-group input-group-lg">
-                    <input
-                    type="number"
-                    placeholder="Phone Number"
-                    name="phoneNumber"
-                    class="form-control"
-                    style="margin-right:13px; margin-left:13px;"
-                    required
-                    ngModel
-                    >
-                  </div>
-                </div>
-              </div>
-              <br>
-              <div class="row">
-                <div class="input-group input-group-lg">
-                  <input
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  class="form-control"
-                  style="margin-right:13px; margin-left:13px;"
-                  required
-                  email
-                  ngModel
-                  #email="ngModel"
-                  >
-                  <span class="help-block" *ngIf="!email.valid && email.touched" style="color:red;">Please enter a valid email!</span>
-                </div>
-              </div>
-              <br>
-              <div class="row">
-                <div class="input-group input-group-lg">
-                  <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Password"
-                  name="password"
-                  style="margin-right:13px; margin-left:13px;"
-                  required
-                  ngModel
-                  >
-                </div>
-              </div>
-              <br>
-              <div class="row">
-                <button type="submit" class="btn btn-block btn-outline-success" style="margin-right:13px; margin-left:13px;" [disabled]="!f.valid">Register</button>
-              </div>
+<div class="jumbotron">
+    <h2 class="text-center">Sign Up</h2>
+</div>
+<div class="container">
+     <form (ngSubmit)="onRegisterUser(f)" #f="ngForm" >
+            <div class="input-group input-group-lg row ">
+            <h4 class="col-12">Your credentials</h4>
+            <label for="email" class="col-12">Your email*
+            <input type="email" name="email" class="form-control col-12" required email ngModel #email="ngModel">
+            <span class="help-block col-12" *ngIf="!email.valid && email.touched" style="color:red;">Please enter a valid email!</span></label>
+            <label for="password" class="col-12">Your password*
+            <input id="password" type="password" class="form-control col-12" name="password" required ngModel></label>  
+            <h4 class="col-12 mt-5">Professional Experience</h4>             
+            <label for="techstack" class="col-12" >Choose your Techstack*
+                <select id="techstack" multiple class="form-control col-12" name="techStack" required ngModel>
+                  <option value="java">Java</option>
+                  <option value="csharp">C#</option>
+                  <option value="cplusplus">C++</option>
+                  <option value="javascript">Javascript</option>
+                  <option value="net">.NET</option>
+                  <option value="vuejs">Vue.Js</option>
+                  <option value="angularjs">Angular.Js</option>
+                  <option value="spring">Spring</option>                          
+                </select></label>
+                <label for="linkedin" class="col-12">LinkedIn
+                    <input id="linkedin" type="text" name="linkedinLink" class="form-control col-12" ngModel></label> 
+                    <label for="stackoverflow" class="col-12" >Stackoverflow
+                    <input id="stackoverflow" type="text"  name="stackoverflowLink" class="form-control col-12" ngModel> </label> 
+                    <label for="github" class="col-12" >GitHub
+                    <input id="github" type="text" name="githubLink" class="form-control col-12" ngModel></label>   
+                    <label for="file" class="col-12">Upload your CV
+                        <input id="file" type="file" name="file" class="form-control col-12" ngModel></label>     
+              <h4 class="col-12 mt-5">Personal Information</h4>            
+                <label for="username" class="col-12" >Username
+                    <input id="username" type="text"  name="username" class="form-control col-12" ngModel></label>
+              <label for="firstname" class="col-12" >First Name*
+              <input id="firstname" type="text" name="firstName" class="form-control col-12" required ngModel></label>
+              <label for="lastname" class="col-12" >Last Name*
+              <input id="lastname" type="text"  name="lastName" class="form-control col-12" required ngModel></label>
+              <label for="number" class="col-12">Your telephone number
+                  <input id="number" type="number"  name="phoneNumber" class="form-control col-12" ngModel></label>             
+              <label for="country" class="col-12" >Choose your country*
+              <select id="country" name="country" class="form-control col-12" ngModel="GR" required>
+                <option value="GR">Greece</option>
+                <option value="AU">Australia</option>
+                <option value="CA">Canada</option>
+                <option value="US">USA</option>
+              </select></label>
+              <div class="col-12">
+              <p class="font-italic mt-3 text-right">Fields with * are required</p>               
+              <button type="submit" class="btn btn-block col-12 my-4" [disabled]="!f.valid">Register</button>
+            </div>
+            </div>
         </form>
       </div>
-    </div>
-    <hr>
-        <h5 class="text-center m-5">Need more info?</h5>
-        <h6 class="text-center m-5">We’re here to help. Send us an email (info@codehub.gr)</h6>
-</div>
+<hr>
+<h5 class="text-center m-5">Need more info?</h5>
+<h6 class="text-center m-5">We’re here to help. Send us an email (info@codehub.gr)</h6>

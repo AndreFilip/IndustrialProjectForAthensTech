@@ -2,8 +2,8 @@ export class User {
 
     firstName: string;
     lastName: string;
-    techStack: string;
-    profileLink: string;
+    techStack: string[];
+    linkedInLink: string;
     phoneNumber: string;
     email: string;
     password: string;
@@ -12,13 +12,17 @@ export class User {
     dateCreated : Date;
     latestLogin: Date;
     isActive: Boolean;
+    stackOverflowLink: string;
+    githubLink: string;
+    username: string;
 
 
-  constructor(firstName: string, lastName: string, techStack: string, profileLink: string, phoneNumber: string, email: string, password: string, roleName: string, countryIsoCode: string, dateCreated: Date, latestLogin: Date, isActive: Boolean) {
+
+  constructor(firstName: string, lastName: string, techStack: string[], linkedInLink: string, phoneNumber: string, email: string, password: string, roleName: string, countryIsoCode: string, dateCreated: Date, latestLogin: Date, isActive: Boolean, stackOverflowLink: string, githubLink: string, username: string) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.techStack = techStack;
-    this.profileLink = profileLink;
+    this.linkedInLink = linkedInLink;
     this.phoneNumber = phoneNumber;
     this.email = email;
     this.password = password;
@@ -27,5 +31,9 @@ export class User {
     this.dateCreated = dateCreated;
     this.latestLogin = latestLogin;
     this.isActive = isActive;
+    this.stackOverflowLink = stackOverflowLink;
+    this.githubLink = githubLink;
+    this.username = username;
+
   }
 }

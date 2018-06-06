@@ -1,0 +1,64 @@
+<div class="jumbotron">
+    <h2 class="text-center">Edit your Profile</h2>
+  </div>
+<div class="container">
+ 
+<form (ngSubmit)="submitChanges(f)" #f="ngForm" >
+    <div class="list-group">
+        <div class="input-group input-group-lg row">
+          <label for="email" class="col-12" >Email*
+              <input id="email" type="email"  name="email" class="form-control" required email [ngModel]="user.email" #email="ngModel">                    
+            </label>
+            <p class="help-block my-3 col-12" *ngIf="!email.valid && email.touched" style="color:red;">Please enter a valid email!</p> 
+            <label for="teckstack" class="col-12">Teckstack*
+                <select id="teckstack" class="form-control" name="techStack" [ngModel]="user.techStack" multiple  required>
+                  <option value="java">Java</option>
+                  <option value="csharp">C#</option>
+                  <option value="cplusplus">C++</option>
+                  <option value="javascript">Javascript</option>
+                  <option value="net">.NET</option>
+                  <option value="vuejs">Vue.Js</option>
+                  <option value="angular">Angular</option>
+                  <option value="spring">Spring</option>                          
+                </select>
+              </label>
+              <label for="linkedin" class="col-12">LinkedIn
+                <input id="linkedin" type="text"  name="linkedin" class="form-control" [ngModel]="user.linkedInLink" >
+              </label> 
+              <label for="stackoverflow" class="col-12">StackOverflow
+                <input id="stackoverflow" type="text"  name="stackoverflow" class="form-control" [ngModel]="user.stackOverflowLink" >
+                </label> 
+              <label for="github" class="col-12">GitHub
+                <input id="github" type="text" name="github" class="form-control" [ngModel]="user.githubLink" >
+              </label>                           
+                               
+            <label for="username" class="col-12">Username
+            <input id="username" type="text"  name="username" class="form-control" [ngModel]="user.username" >
+          </label>   
+          <label for="firstname" class="col-12">First Name*
+            <input id="firstname" type="text"  name="firstName" class="form-control" [ngModel]="user.firstName"  >
+          </label>
+          <label for="lastname" class="col-12">Last Name*
+            <input id="lastname" type="text"  name="lastName" class="form-control"  [ngModel]="user.lastName" >
+          </label>          
+          <label for="number" class="col-12">Telephone Number
+            <input id="number" type="number"  name="phoneNumber" class="form-control" [ngModel]="user.phoneNumber" >
+          </label>                 
+          <label for="country" class="col-12">Country*
+              <select id="country" name="country" class="form-control" [ngModel]="user.countryIsoCode"  required>
+                <option value="GR">Greece</option>
+                <option value="AU">Australia</option>
+                <option value="CA">Canada</option>
+                <option value="US">USA</option>
+              </select>  
+            </label>     
+            <label for="file" class="col-12">Upload your CV
+                <input id="file" type="file" name="file" class="form-control" ngModel >
+                </label>   
+        <button type="submit" class="btn btn-block btn-success" style="margin-right:13px; margin-left:13px; margin-top: 20px;" [disabled]="!f.valid">Save Changes</button>
+        <button routerLink="/home" class="btn btn-block btn-warning" style="margin-right:13px; margin-left:13px; margin-top: 20px;">Exit</button>
+      </div>
+  </div>
+  
+</form>
+</div>

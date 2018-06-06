@@ -19,13 +19,14 @@ import { SignupComponent } from './home/navbar/myaccount/signup/signup.component
 import { ContactUsComponent } from './home/navbar/myaccount/contact-us/contact-us.component';
 import { AppRoutingModule } from './app-routing.module';
 import { InstructorsComponent } from './home/navbar/learn/instructors/instructors.component';
-import { HttpClientModule }    from '@angular/common/http';
-import {UserService} from "./user.service";
-import { AdminComponent } from './home/navbar/admin/admin.component';
-import { JobPostsComponent } from './home/navbar/admin/job-posts/job-posts.component';
-import { ApplicantsComponent } from './home/navbar/admin/applicants/applicants.component';
+import { HttpClientModule } from '@angular/common/http';
+import {UserService} from './user.service';
 import { MyprofileComponent } from './home/navbar/myaccount/myprofile/myprofile.component';
-
+import { AdminComponent } from './home/admin/admin.component';
+import { ArticlesComponent } from './home/admin/articles/articles.component';
+import { JobPostsComponent } from './home/admin/job-posts/job-posts.component';
+import { UsersComponent } from './home/admin/users/users.component';
+import { EditProfileComponent } from './home/navbar/myaccount/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -44,10 +45,12 @@ import { MyprofileComponent } from './home/navbar/myaccount/myprofile/myprofile.
     SignupComponent,
     ContactUsComponent,
     InstructorsComponent,
+    MyprofileComponent,
     AdminComponent,
+    ArticlesComponent,
     JobPostsComponent,
-    ApplicantsComponent,
-    MyprofileComponent
+    UsersComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
