@@ -7,11 +7,11 @@
     <div class="list-group">
         <div class="input-group input-group-lg row">
           <label for="email" class="col-12" >Email*
-              <input id="email" type="email"  name="email" class="form-control" required email [ngModel]="user.email" #email="ngModel">                    
+              <input id="email" type="email"  name="email" class="form-control" required email [(ngModel)]="user.email" #email="ngModel">                    
             </label>
             <p class="help-block my-3 col-12" *ngIf="!email.valid && email.touched" style="color:red;">Please enter a valid email!</p> 
             <label for="teckstack" class="col-12">Teckstack*
-                <select id="teckstack" class="form-control" name="techStack" [ngModel]="user.techStack" multiple  required>
+                <select id="teckstack" class="form-control" name="techStack" [(ngModel)]="user.userTechstack" multiple  required>
                   <option value="java">Java</option>
                   <option value="csharp">C#</option>
                   <option value="cplusplus">C++</option>
@@ -23,29 +23,29 @@
                 </select>
               </label>
               <label for="linkedin" class="col-12">LinkedIn
-                <input id="linkedin" type="text"  name="linkedin" class="form-control" [ngModel]="user.linkedInLink" >
+                <input id="linkedin" type="text"  name="linkedin" class="form-control" [(ngModel)]="user.linkedinPath" >
               </label> 
               <label for="stackoverflow" class="col-12">StackOverflow
-                <input id="stackoverflow" type="text"  name="stackoverflow" class="form-control" [ngModel]="user.stackOverflowLink" >
+                <input id="stackoverflow" type="text"  name="stackoverflow" class="form-control" [(ngModel)]="user.stackOverflowPath" >
                 </label> 
               <label for="github" class="col-12">GitHub
-                <input id="github" type="text" name="github" class="form-control" [ngModel]="user.githubLink" >
+                <input id="github" type="text" name="github" class="form-control" [(ngModel)]="user.gitPath" >
               </label>                           
                                
             <label for="username" class="col-12">Username
-            <input id="username" type="text"  name="username" class="form-control" [ngModel]="user.username" >
+            <input id="username" type="text"  name="username" class="form-control" [(ngModel)]="user.username" >
           </label>   
           <label for="firstname" class="col-12">First Name*
-            <input id="firstname" type="text"  name="firstName" class="form-control" [ngModel]="user.firstName"  >
+            <input id="firstname" type="text"  name="firstName" class="form-control" [(ngModel)]="user.firstName"  >
           </label>
           <label for="lastname" class="col-12">Last Name*
-            <input id="lastname" type="text"  name="lastName" class="form-control"  [ngModel]="user.lastName" >
+            <input id="lastname" type="text"  name="lastName" class="form-control"  [(ngModel)]="user.lastName" >
           </label>          
           <label for="number" class="col-12">Telephone Number
-            <input id="number" type="number"  name="phoneNumber" class="form-control" [ngModel]="user.phoneNumber" >
+            <input id="number" type="number"  name="phoneNumber" class="form-control" [(ngModel)]="user.phoneNumber" >
           </label>                 
           <label for="country" class="col-12">Country*
-              <select id="country" name="country" class="form-control" [ngModel]="user.countryIsoCode"  required>
+              <select id="country" name="country" class="form-control" [(ngModel)]="user.country"  required>
                 <option value="GR">Greece</option>
                 <option value="AU">Australia</option>
                 <option value="CA">Canada</option>

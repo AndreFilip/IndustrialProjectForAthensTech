@@ -1,3 +1,16 @@
+<body>
 <div class="jumbotron">
-    <h2 class=" text-center">Code.Career</h2>
+    <h2 class="text-center">Code.Career</h2>
 </div>
+<div class="container">
+  <ul class="text-center" *ngFor="let job of jobs; let i = index">      
+    <li class="row">        
+        <section class="col-12">
+        <a class="text-left d-flex justify-content-around" routerLink="/careerdetail/{{job.jobTitle}}">
+        <span>{{job.jobTitle}}</span><span>{{job.location}}</span>
+        </a>
+        </section>
+    </li>
+  </ul>
+</div>
+</body>

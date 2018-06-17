@@ -9,3 +9,8 @@ color: #FF4500 !important;
 .logo:focus {
     outline: none !important;
 }
+
+.active-link {
+    color: #FF4500 !important;
+}
+    

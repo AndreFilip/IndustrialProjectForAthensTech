@@ -1,49 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../../../../user.model';
-import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../../user.service';
-import { Location } from '@angular/common';
-
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-myprofile',
   templateUrl: './myprofile.component.html',
   styleUrls: ['./myprofile.component.css']
 })
+
 export class MyprofileComponent implements OnInit {
   user: User;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
-  ngOnInit() {
-    // userService should know user logically?
-    // this.user = this.userService.user;
-
-    // for testing purposes
-    this.user =  {
-      firstName: "dasda",
-        lastName: "dasda",
-        techStack: ["dasda", "1354"],
-        linkedInLink: "dasda",
-        phoneNumber: "dasda",
-        email: "dasda",
-        password: "dasda",
-        roleName: "dasda",
-        countryIsoCode: "dasda",
-        dateCreated : new Date,
-        latestLogin: new Date,
-        isActive: true,
-        stackOverflowLink: "dasda",
-        githubLink: "dasda",
-        username: "dasda",
-      }
-    
+  ngOnInit() { 
+    this.user = new User( "dasda", "dasda", ["java","javascript"], "dasda", "6971234567", "email", null, null, 'GR', null, null, true,  "dasda",  "dasda", "dasda");           
   }
 
-  editProfile() {
-  }    
+  // getUser(theEmail: string) {
+  //   this.userService.getUser(theEmail).subscribe(
+  //     response => {console.log(response); this.user = response; },
+  //     err => {
+  //       console.log(err); 
+  //       this.user = new User( "dasda", "dasda", ["java","javascript"], "dasda", "6971234567", "email", null, null, 'GR', null, null, true,  "dasda",  "dasda", "dasda");           
+  //       alert('Something went wrong and user was not get.');  
+  //     }
+  //     );
+  // }
 
 
 }

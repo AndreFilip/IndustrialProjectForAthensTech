@@ -1,38 +1,39 @@
 export class User {
+  email: string;
+  username: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  country: string;    
+  linkedinPath: string;
+  stackOverflowPath: string;
+  gitPath: string;
+  phoneNumber: string;
+  userTechstack: string[];
+      
+  roleName: string;    
+  dateCreated : Date;
+  latestLogin: Date;
+  isActive: Boolean;
+  
+  constructor(firstName: string, lastName: string, userTechstack: string[], linkedinPath: string, phoneNumber: string, 
+    email: string, password: string, roleName: string, country: string, dateCreated: Date, latestLogin: Date, isActive: Boolean, 
+    stackOverflowPath: string, gitPath: string, username: string) {
 
-    firstName: string;
-    lastName: string;
-    techStack: string[];
-    linkedInLink: string;
-    phoneNumber: string;
-    email: string;
-    password: string;
-    roleName: string;
-    countryIsoCode: string;
-    dateCreated : Date;
-    latestLogin: Date;
-    isActive: Boolean;
-    stackOverflowLink: string;
-    githubLink: string;
-    username: string;
-
-
-
-  constructor(firstName: string, lastName: string, techStack: string[], linkedInLink: string, phoneNumber: string, email: string, password: string, roleName: string, countryIsoCode: string, dateCreated: Date, latestLogin: Date, isActive: Boolean, stackOverflowLink: string, githubLink: string, username: string) {
     this.firstName = firstName;
     this.lastName = lastName;
-    this.techStack = techStack;
-    this.linkedInLink = linkedInLink;
+    this.userTechstack = userTechstack;
+    this.linkedinPath = linkedinPath;
     this.phoneNumber = phoneNumber;
     this.email = email;
     this.password = password;
     this.roleName = roleName;
-    this.countryIsoCode = countryIsoCode;
+    this.country = country;
     this.dateCreated = dateCreated;
     this.latestLogin = latestLogin;
     this.isActive = isActive;
-    this.stackOverflowLink = stackOverflowLink;
-    this.githubLink = githubLink;
+    this.stackOverflowPath = stackOverflowPath;
+    this.gitPath = gitPath;
     this.username = username;
 
   }

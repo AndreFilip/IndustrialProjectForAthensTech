@@ -17,7 +17,9 @@ import { UsersComponent } from './home/admin/users/users.component';
 import { JobPostsComponent } from './home/admin/job-posts/job-posts.component';
 import { ArticlesComponent } from './home/admin/articles/articles.component';
 import { EditProfileComponent } from './home/navbar/myaccount/edit-profile/edit-profile.component';
+import { CareerdetailComponent } from './home/navbar/careerdetail/careerdetail.component';
 
+import {AuthGuard} from './auth.guard';
 
 
 const appRoutes: Routes = [
@@ -32,12 +34,14 @@ const appRoutes: Routes = [
   {path: 'contact-us', component: ContactUsComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'myprofile', component: MyprofileComponent},
-  {path: 'admin', component: AdminComponent},
-  {path: 'admin-users', component: UsersComponent},
-  {path: 'admin-jobs-post', component: JobPostsComponent},
-  {path: 'admin-articles-post', component: ArticlesComponent},
-  {path: 'edit-profile', component: EditProfileComponent}
+  {path: 'myprofile', component: MyprofileComponent, canActivate: [AuthGuard] },
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+  {path: 'admin-users', component: UsersComponent, canActivate: [AuthGuard]},
+  {path: 'admin-jobs-post', component: JobPostsComponent, canActivate: [AuthGuard]},
+  {path: 'admin-articles-post', component: ArticlesComponent, canActivate: [AuthGuard]},
+  {path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuard]},
+  {path: 'careerdetail/:jobtitle', component: CareerdetailComponent },
+  {path: '**' , redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule({

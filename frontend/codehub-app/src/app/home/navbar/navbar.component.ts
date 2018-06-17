@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import {UserService} from '../../user.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -11,15 +13,18 @@ export class NavbarComponent implements OnInit {
   @Input() doLoginStatus: boolean;
   @Output() doLogin = new EventEmitter;
 
-  constructor() {    
+  constructor(private userService: UserService) {    
     this.logo = '/assets/images/logo.png'
    }
 
   ngOnInit() {
+
   }
 
   onDoLogin() {
     this.doLogin.emit();
   }
+
+  
 
 }
