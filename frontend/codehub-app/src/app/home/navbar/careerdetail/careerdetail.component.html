@@ -1,0 +1,13 @@
+
+<div class="jumbotron">
+    <h2 class="text-center">Code.Career</h2>
+</div>
+<div class="container">
+    <ul class="text-center" *ngFor="let job of jobs; let i = index">     
+        <li class="row justify-content-around">
+            <aside class="col-12 col-md-4"><h3 class="text-left">{{job.companyTitle}}</h3><hr><p class="text-justify"das>{{job.companyDescription}}</p></aside>
+            <section class="col-12 col-md-7"><h3 class="text-left">{{job.jobTitle}}</h3><p class="text-left">{{job.location}}</p><hr><p class="text-justify">{{job.description}}</p><hr><p class="text-justify">{{job.qualifications}}</p></section>
+        </li>
+    </ul>
+</div>
+

@@ -19,12 +19,21 @@ import { SignupComponent } from './home/navbar/myaccount/signup/signup.component
 import { ContactUsComponent } from './home/navbar/myaccount/contact-us/contact-us.component';
 import { AppRoutingModule } from './app-routing.module';
 import { InstructorsComponent } from './home/navbar/learn/instructors/instructors.component';
-import { HttpClientModule }    from '@angular/common/http';
-import {UserService} from "./user.service";
-import { AdminComponent } from './home/navbar/admin/admin.component';
-import { JobPostsComponent } from './home/navbar/admin/job-posts/job-posts.component';
-import { ApplicantsComponent } from './home/navbar/admin/applicants/applicants.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyprofileComponent } from './home/navbar/myaccount/myprofile/myprofile.component';
+import { AdminComponent } from './home/admin/admin.component';
+import { ArticlesComponent } from './home/admin/articles/articles.component';
+import { JobPostsComponent } from './home/admin/job-posts/job-posts.component';
+import { UsersComponent } from './home/admin/users/users.component';
+import { EditProfileComponent } from './home/navbar/myaccount/edit-profile/edit-profile.component';
+import { CareerdetailComponent } from './home/navbar/careerdetail/careerdetail.component';
+
+import {UserService} from './user.service';
+import {JobpostsService} from './jobposts.service';
+
+import {AuthGuard} from './auth.guard';
+import {TokenInterceptorService} from './token-interceptor.service';
+
 
 
 @NgModule({
@@ -44,10 +53,13 @@ import { MyprofileComponent } from './home/navbar/myaccount/myprofile/myprofile.
     SignupComponent,
     ContactUsComponent,
     InstructorsComponent,
+    MyprofileComponent,
     AdminComponent,
+    ArticlesComponent,
     JobPostsComponent,
-    ApplicantsComponent,
-    MyprofileComponent
+    UsersComponent,
+    EditProfileComponent,
+    CareerdetailComponent
   ],
   imports: [
     BrowserModule,
@@ -56,8 +68,16 @@ import { MyprofileComponent } from './home/navbar/myaccount/myprofile/myprofile.
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [UserService,
-    MyprofileComponent
+  providers: [
+    UserService,
+    JobpostsService,
+    MyprofileComponent, 
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

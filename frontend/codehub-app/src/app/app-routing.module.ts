@@ -11,10 +11,15 @@ import { SignupComponent } from './home/navbar/myaccount/signup/signup.component
 import { PhilosophyComponent } from './home/navbar/about-us/philosophy/philosophy.component';
 import { TeamComponent } from './home/navbar/about-us/team/team.component';
 import { InstructorsComponent } from './home/navbar/learn/instructors/instructors.component';
-import { AdminComponent } from './home/navbar/admin/admin.component';
-import { JobPostsComponent } from './home/navbar/admin/job-posts/job-posts.component';
-import { ApplicantsComponent } from './home/navbar/admin/applicants/applicants.component';
 import { MyprofileComponent } from './home/navbar/myaccount/myprofile/myprofile.component';
+import { AdminComponent } from './home/admin/admin.component';
+import { UsersComponent } from './home/admin/users/users.component';
+import { JobPostsComponent } from './home/admin/job-posts/job-posts.component';
+import { ArticlesComponent } from './home/admin/articles/articles.component';
+import { EditProfileComponent } from './home/navbar/myaccount/edit-profile/edit-profile.component';
+import { CareerdetailComponent } from './home/navbar/careerdetail/careerdetail.component';
+
+import {AuthGuard} from './auth.guard';
 
 
 const appRoutes: Routes = [
@@ -29,11 +34,14 @@ const appRoutes: Routes = [
   {path: 'contact-us', component: ContactUsComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'admin', component: AdminComponent},
-  {path: 'job-posts', component: JobPostsComponent},
-  {path: 'applicants', component: ApplicantsComponent},
-  {path: 'myprofile', component: MyprofileComponent}
-  
+  {path: 'myprofile', component: MyprofileComponent, canActivate: [AuthGuard] },
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+  {path: 'admin-users', component: UsersComponent, canActivate: [AuthGuard]},
+  {path: 'admin-jobs-post', component: JobPostsComponent, canActivate: [AuthGuard]},
+  {path: 'admin-articles-post', component: ArticlesComponent, canActivate: [AuthGuard]},
+  {path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuard]},
+  {path: 'careerdetail/:jobtitle', component: CareerdetailComponent },
+  {path: '**' , redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule({

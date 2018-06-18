@@ -9,7 +9,6 @@ import java.util.Date;
 public class User {
 
     private String email;
-    private String username;
     private String password;
     private String roleName;
     private String firstName;
@@ -30,41 +29,12 @@ public class User {
     public User() {
     }
 
-    public User(String email, String username, String password, String roleName, String firstName, String lastName, String countryIsoCode, Boolean isActive, Date dateCreated, Date latestLogin, String phoneNumber, String status, String internalComments, String cvPath, String avatarPath, String linkedinPath, String stackOverflowPath, String gitPath) {
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.roleName = roleName;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.countryIsoCode = countryIsoCode;
-        this.isActive = isActive;
-        this.dateCreated = dateCreated;
-        this.latestLogin = latestLogin;
-        this.phoneNumber = phoneNumber;
-        this.status = status;
-        this.internalComments = internalComments;
-        this.cvPath = cvPath;
-        this.avatarPath = avatarPath;
-        this.linkedinPath = linkedinPath;
-        this.stackOverflowPath = stackOverflowPath;
-        this.gitPath = gitPath;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {
@@ -199,7 +169,6 @@ public class User {
     public String toString() {
         return "User{" +
                 "email='" + email + '\'' +
-                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", roleName='" + roleName + '\'' +
                 ", firstName='" + firstName + '\'' +

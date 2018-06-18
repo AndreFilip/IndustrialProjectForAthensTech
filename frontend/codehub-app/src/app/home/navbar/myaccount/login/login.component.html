@@ -12,25 +12,11 @@
       <form (ngSubmit)="onLoginUser(f)" #f="ngForm">
         <div class="list-group text-center">
           <div class="input-group input-group-lg">
-            <input
-            type="text"
-            placeholder="Username"
-            name="userName"
-            class="form-control"
-            required
-            ngModel
-            >
+            <input type="text" placeholder="Username" name="userName" class="form-control" required ngModel>
           </div>
           <br>
           <div class="input-group input-group-lg">
-            <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            class="form-control"
-            required
-            ngModel
-            >
+            <input type="password" placeholder="Password" name="password" class="form-control" required ngModel>
           </div>
           <br>
           <button type="submit" class="btn btn-outline-success" [disabled]="!f.valid">Login</button>

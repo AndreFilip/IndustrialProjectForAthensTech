@@ -2,99 +2,35 @@
   <h2 class="text-center">My Profile</h2>
 </div>
 <div class="container mb-5">
-  <h3 class="text-center my-4">Edit your profile</h3>
-  <div class="row">
+  <h3 class="text-center my-4">View your profile</h3>
+  <div class="row">    
+    <h5 class="text-center col-12">Personal Information</h5>
     <section class="col-12">
-        <form (ngSubmit)="(f)" #f="ngForm" >
-            <div class="list-group">
-                <div class="input-group input-group-lg row">
-                  <label for="firstname" class="col-12">Firstname
-                    <input id="firstname" type="text" value="" name="firstName" class="form-control" required ngModel>
-                  </label>
-                  <label for="lastname" class="col-12">Lastname
-                    <input id="lastname" type="text" value="" name="lastName" class="form-control"  required ngModel>
-                  </label>
-                  <label for="username" class="col-12">Username
-                    <input id="username" type="text" value="" name="username" class="form-control" ngModel>
-                  </label>
-                </div>
-                <br>
-                <div class="row">
-                  <div class="input-group input-group-lg col-12">
-                      <select multiple class="form-control" name="techStack" required ngModel>
-                        <option value="java">Java</option>
-                        <option value="csharp">C#</option>
-                        <option value="cplusplus">C++</option>
-                        <option value="javascript">Javascript</option>
-                        <option value="net">.NET</option>
-                        <option value="vuejs">Vue.Js</option>
-                        <option value="angularjs">Angular.Js</option>
-                        <option value="spring">Spring</option>                          
-                      </select>
-                  </div>              
-                  <div class="input-group input-group-lg col-12 mt-3">
-                      <select id="country" name="country" class="form-control" required ngModel>
-                        <option value="GR">Greece</option>
-                        <option value="AU">Australia</option>
-                        <option value="CA">Canada</option>
-                        <option value="US">USA</option>
-                      </select>                    
-                  </div>                
-                </div>
-                <br>              
-                <div class="row">
-                    <div class="col-12">
-                    <label for="file">Upload your CV</label>
-                    <input type="file" name="file" class="form-control" ngModel>
-                    </div>
-                </div> 
-                <br>
-                <div class="row">
-                    <div class="input-group input-group-lg col-12 col-sm-6">
-                      <label for="number">Number
-                        <input id="number" type="number" value="" name="phoneNumber" class="form-control" ngModel>
-                      </label> 
-                    </div>
-                    <div class="input-group input-group-lg col-12 col-sm-6" >
-                        <label for="email" >Email
-                          <input id="email" type="email" value="" name="email" class="form-control" required email ngModel #email="ngModel">
-                        </label>
-                        <span class="help-block" *ngIf="!email.valid && email.touched" style="color:red;">Please enter a valid email!</span>
-                      </div>
-                </div>         
-              <br>
-              <div class="row">
-                <button type="submit" class="btn btn-block btn-success" style="margin-right:13px; margin-left:13px;" [disabled]="!f.valid">Make Changes</button>
-              </div>
-              <br>
-              <div class="row">
-                <a type="button" href="/" class="btn btn-block btn-warning" style="margin-right:13px; margin-left:13px;">Exit</a>
-              </div>
-            </div>
-        </form>
+        Email: {{user.email}} 
+        <br>
+        Username: {{user.username}} 
+        <br>
+        First Name: {{user.firstName}} 
+        <br>
+        Last Name: {{user.lastName}} 
+        <br>
+        Number: {{user.phoneNumber}} 
+        <br>
+        Country: {{user.country}} 
+    </section>  
+    <h5 class="text-center col-12">Professional Information</h5>
+    <section class="col-12">      
+      Teckstack: {{user.userTechstack}} 
+      <br>
+      LinkdeIn: {{user.linkedinPath}}  
+      <br>
+      StackOverflow: {{user.stackOverflowPath}} 
+      <br>
+      GitHub: {{user.gitPath}} 
     </section>
-      
-  
-    
-    <!-- <section class="col-12">
-      <form (ngSubmit)="as(f)" #f="ngForm" >
-          <div class="row">
-              <div class="input-group input-group-lg">
-                <input
-                type="password"
-                class="form-control"
-                placeholder="Password"
-                name="password"
-                style="margin-right:13px; margin-left:13px;"
-                required
-                ngModel
-                >
-              </div>
-              <div class="row">
-                  <button type="submit" class="btn btn-block btn-outline-info" style="margin-right:13px; margin-left:13px;" [disabled]="!f.valid">Submit</button>
-                </div>
-        </form>
-      </section> -->
-</div>
+
+   <button routerLink="/edit-profile" class="btn btn-block btn-info" style="margin-right:13px; margin-left:13px; margin-top: 20px;">Edit Profile</button>
+   <button routerLink="/home" class="btn btn-block btn-warning" style="margin-right:13px; margin-left:13px; margin-top: 20px;">Exit</button>
+  </div>
 </div>
 

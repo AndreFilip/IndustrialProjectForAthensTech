@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {User} from "../../../../user.model";
-import {RequestOptions} from "@angular/http";
+import {User} from '../../../../user.model';
+import {UserService} from '../../../../user.service';
+import { Router} from '@angular/router';
 
 
 @Component({
@@ -10,42 +10,32 @@ import {RequestOptions} from "@angular/http";
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
+
 export class SignupComponent implements OnInit {
-private dateCreated;
-private Url = 'http://localhost:8088/api/userService/register';  // URL to web api
 
+  constructor(private userService: UserService, private router: Router) {  }
 
-  user = {
-    firstName: '',
-    lastName: '',
-    techStack: '',
-    profileLink: '',
-    phoneNumber: '',
-    email: '',
-    password: '',
-    roleName: 'Candidate',
-    countryIsoCode: 'GR',
-    dateCreated : new Date(),
-    latestLogin: new Date(),
-    isActive: true
-  };
-
-  constructor(private http: HttpClient) {
-
-  }
-
-
-  ngOnInit() {
-  }
+  ngOnInit() {  }
 
   onRegisterUser(form: NgForm) {
-    const headers = new HttpHeaders().set("Content-Type", "application/json");
-    const newUser = new User( form.value.firstName, form.value.lastName, form.value.techStack, form.value.profileLink, form.value.phoneNumber,
-    form.value.email, form.value.password, "Candidate", "GR", new Date(), new Date(), true);
+    const newUser = new User( form.value.firstName, form.value.lastName, form.value.techStack, form.value.linkedinLink, form.value.phoneNumber,
+    form.value.email, form.value.password, 'candidate', 'GR', new Date(), new Date(), true,  form.value.stackoverflowLink,  form.value.githubLink, form.value.username);
+
     console.log(newUser);
-    return this.http.post('http://localhost:8088/api/userService/register',  JSON.stringify(newUser),
-      { headers: headers}).subscribe(response =>{
-      console.log(response);}
-      );
+
+    this.userService.registerUser(newUser).subscribe(
+      response => { 
+                  console.log(response);
+                  localStorage.setItem('token', response.token);
+                  alert('You successfully signed in.');         
+                  this.router.navigate(['/'])
+                  } ,
+      err =>      {
+                  console.log(err);
+                  alert('You did not sign in. Something went wrong.'); 
+                  }
+    );
+
+    
   }
 }

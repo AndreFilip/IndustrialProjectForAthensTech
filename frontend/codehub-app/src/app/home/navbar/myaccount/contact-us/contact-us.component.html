@@ -3,24 +3,26 @@
 </div>
 
 <div class="container">
-    <form action="" class="m-auto">
+    <form (ngSubmit)="onSend(f)" #f="ngForm" class="m-auto">
+      <h4 class="mb-4 text-center">Send us an email !</h4>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Name" name="name" required>          
+          <input type="text" class="form-control" name="name" placeholder="Name (required)"  ngModel required>      
         </div>
         <div class="form-group">
-          <input type="email" class="form-control" id="validationDefault02" placeholder="Email" name="email" required>       
+          <input type="email" class="form-control" name="email" placeholder="Email (required)" email ngModel #email="ngModel" required>       
+          <p class="help-block" *ngIf="!email.valid && email.touched" style="color:red;">Please enter a valid email!</p>      
         </div>         
         <div class="form-group">
-          <input type="number" class="form-control" id="validationDefault04" name="telephone" placeholder="Your telephone number">          
+          <input type="number" class="form-control" name="telephone" placeholder="Your telephone number" ngModel>          
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" id="validationDefault05" name="subject" placeholder="Subject">
+          <input type="text" class="form-control" name="subject" placeholder="Subject" ngModel>
         </div>        
         <div class="form-group">
-          <textarea class="form-control" id="exampleFormControlTextarea1" name="message" rows="5" maxlength="300"></textarea>
+          <textarea class="form-control" name="message" placeholder="Your message ... (required)" rows="5" maxlength="300" ngModel required></textarea>
         </div>
         <div class="form-group text-center mt-5">
-            <button type="submit" class="btn btn-info btn-block">Send</button>
+            <button type="submit" class="btn btn-info btn-block" [disabled]="!f.valid">Send</button>
         </div>
     </form>
 </div>

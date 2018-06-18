@@ -14,12 +14,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/userService")
 public class UserController {
 
@@ -72,5 +74,10 @@ public class UserController {
        return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(user);
     }
 
-
+    @CrossOrigin
+    @RequestMapping("/login")
+    public Principal user(Principal principal) {
+        log.info("user logged "+principal);
+        return principal;
+    }
 }

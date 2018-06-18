@@ -12,8 +12,8 @@ export class TheProgressComponent implements OnInit {
 
 
   constructor() {
-    this.fullImagePath = '/assets/images/image_codelearn.jpg'
-    this.fullImagePath3 = '/assets/images/program-structure.jpg'
+    this.fullImagePath = '/assets/images/image_codelearn.jpg';
+    this.fullImagePath3 = '/assets/images/program-structure.jpg';
    }
 
   ngOnInit() {
