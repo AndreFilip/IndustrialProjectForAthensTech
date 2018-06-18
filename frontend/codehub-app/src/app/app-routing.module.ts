@@ -40,7 +40,7 @@ const appRoutes: Routes = [
   {path: 'admin-jobs-post', component: JobPostsComponent, canActivate: [AuthGuard]},
   {path: 'admin-articles-post', component: ArticlesComponent, canActivate: [AuthGuard]},
   {path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuard]},
-  {path: 'careerdetail/:jobtitle', component: CareerdetailComponent },
+  /*{path: 'careerdetail/:jobtitle', component: CareerdetailComponent },*/
   {path: '**' , redirectTo: '/home', pathMatch: 'full'}
 ];
 

@@ -1,2 +1,12 @@
 /.idea
 /backend/target
+/.settings
+/.project
+/backend/.settings
+/backend/bin
+/backend/.project
+/backend/.classpath
+/backend/codehub-backend.iml
+/frontend/.settings
+/frontend/.project
+/frontend/.classpath

@@ -59,7 +59,7 @@ import {TokenInterceptorService} from './token-interceptor.service';
     JobPostsComponent,
     UsersComponent,
     EditProfileComponent,
-    CareerdetailComponent
+    CareerdetailComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,3 @@
-
-li {
-    background-color: #ffffff;
-    padding: 2rem;
-}
-
-body {
-    height:100%;
-    background-color: #fff1e6 !important;
+.row {
+    padding:1rem;
 }
