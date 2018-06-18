@@ -7,8 +7,12 @@ DROP TABLE IF EXISTS role;
 DROP TABLE IF EXISTS country;
 DROP TABLE IF EXISTS job_posts;
 DROP TABLE IF EXISTS status;
+DROP TABLE IF EXISTS programs;
+DROP TABLE IF EXISTS programs_user;
 
-
+-- -----------------------------------------------------
+-- Table status
+-- -----------------------------------------------------
 CREATE TABLE  status(
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   name VARCHAR(128) UNIQUE  NOT NULL ,
@@ -16,7 +20,9 @@ CREATE TABLE  status(
 )
 ENGINE = InnoDB;
 
-
+-- -----------------------------------------------------
+-- Table role
+-- -----------------------------------------------------
 CREATE TABLE  role(
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   name VARCHAR(128) UNIQUE  NOT NULL ,
@@ -24,6 +30,9 @@ CREATE TABLE  role(
 )
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table country
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS country(
   id BIGINT UNSIGNED NOT NULL ,
   isoCode TEXT NOT NULL,
@@ -169,5 +178,39 @@ CREATE TABLE IF NOT EXISTS job_posts_user (
     ON UPDATE NO ACTION)
   ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table programs
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS programs (
+	id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+	programTitle VARCHAR(128) NOT NULL,
+	price VARCHAR(128) NULL,
+	smallDescription TEXT NULL,
+	mainDescription TEXT NULL,
+	additionalInfo TEXT NULL,
+	category VARCHAR(128) NULL,
+	programLogo TEXT NULL,
+	PRIMARY KEY (id))
+	ENGINE = InnoDB;
 
-
+-- -----------------------------------------------------
+-- Table programs_user
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS programs_user (
+	programs_id BIGINT UNSIGNED NOT NULL,
+	userId BIGINT UNSIGNED NOT NULL,
+	PRIMARY KEY (programs_id, userId),
+	INDEX fk_programs_user_user_idx (userId ASC),
+	INDEX fk_programs_user_programs_idx (programs_id ASC),
+	CONSTRAINT fk_programs_user_programs
+	FOREIGN KEY (programs_id)
+	REFERENCES programs (id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION,
+	CONSTRAINT fk_programs_user_user
+	FOREIGN KEY (userId)
+	REFERENCES codehub_user (id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION)
+	ENGINE = InnoDB;
+	
