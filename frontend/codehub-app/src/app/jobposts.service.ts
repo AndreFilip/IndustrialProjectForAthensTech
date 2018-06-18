@@ -45,7 +45,7 @@ export class JobpostsService {
     if (!location.trim()) {
       return of([])
     };     
-    return this.http.get<Job[]>(this.getJobsByJobTitleURL + "/" + location);
+    return this.http.get<Job[]>(this.getJobPostsByLocationURL + "/" + location);
   }
 }
 
