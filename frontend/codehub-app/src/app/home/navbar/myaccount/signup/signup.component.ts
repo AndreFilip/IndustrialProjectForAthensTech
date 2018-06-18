@@ -18,17 +18,19 @@ export class SignupComponent implements OnInit {
   ngOnInit() {  }
 
   onRegisterUser(form: NgForm) {
-    const newUser = new User( form.value.firstName, form.value.lastName, form.value.techStack, form.value.linkedinLink, form.value.phoneNumber,
-    form.value.email, form.value.password, 'candidate', 'GR', new Date(), new Date(), true,  form.value.stackoverflowLink,  form.value.githubLink, form.value.username);
+    const newUser = new User (form.value.email, form.value.username, form.value.password, form.value.firstName, form.value.lastName, form.value.country, true, new Date(), new Date(),
+    form.value.phoneNumber, 'status', 'internalComments', 'cvPath', 'avatarPath', form.value.linkedinLink, form.value.stackoverflowLink,  form.value.githubLink);
 
     console.log(newUser);
 
     this.userService.registerUser(newUser).subscribe(
       response => { 
-                  console.log(response);
-                  localStorage.setItem('token', response.token);
-                  alert('You successfully signed in.');         
-                  this.router.navigate(['/'])
+                    console.log(response);
+                    if (response.status >= 200 && response.status <= 299) {
+                      localStorage.setItem('token', response.token);
+                      alert('You successfully signed in.');         
+                      this.router.navigate(['/'])
+                    }   
                   } ,
       err =>      {
                   console.log(err);

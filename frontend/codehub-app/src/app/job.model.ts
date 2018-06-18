@@ -6,16 +6,18 @@ export class Job {
     companyDescription: string ;
     qualifications: string ; 
     companyLogo: string;
+    dateCreated: Date;
   
     constructor(jobTitle: string, location: string, description: string, companyTitle: string, 
-        companyDescription: string, qualifications: string, companyLogo: string) {
+        companyDescription: string, qualifications: string, companyLogo: string, dateCreated: Date) {
         this.jobTitle = jobTitle;
         this.location = location;
         this.description = description;
         this.companyTitle = companyTitle;
         this.companyDescription = companyDescription;
         this.qualifications = qualifications;
-        this.companyLogo = companyLogo; 
+        this.companyLogo = companyLogo;
+        this.dateCreated = dateCreated; 
       }
   }
   

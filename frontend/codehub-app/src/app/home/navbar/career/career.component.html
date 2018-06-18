@@ -2,15 +2,44 @@
 <div class="jumbotron">
     <h2 class="text-center">Code.Career</h2>
 </div>
-<div class="container">
-  <ul class="text-center" *ngFor="let job of jobs; let i = index">      
-    <li class="row">        
-        <section class="col-12">
-        <a class="text-left d-flex justify-content-around" routerLink="/careerdetail/{{job.jobTitle}}">
-        <span>{{job.jobTitle}}</span><span>{{job.location}}</span>
+<div class="container" *ngIf="x">
+
+    <div class="m-5">
+        <form (ngSubmit)="onSearch(f)" #f="ngForm">
+            <div class="row">
+            <label for="jobtitleInput1" class="col-12 col-xl-1">JobTitle: </label>
+            <input id="jobtitleInput1" class="form-control col-12 col-xl-3" type="text" placeholder="Search" ngModel name="jobtitleInput">
+            <label for="locationInput1" class="col-12 col-xl-1">Location: </label>
+            <input id="locationInput1" class="form-control col-12 col-xl-3" type="text" placeholder="Search" ngModel name="locationInput">
+            <!-- <label for="stackInput1" class="col-12 col-sm-6 mt-3" >Stack:
+              <select id="stackInput1" multiple class="form-control col-12" (ngModel)="searchCriteria.stackInput" name="stackInput">
+                  <option *ngFor="let stackObj of stacks" [value]="stackObj.stack">{{stackObj.stack}}</option>
+                </select> 
+            </label>             -->
+            <div class="col-12 col-xl-2"> <button class="btn btn-info" type="submit" style="width:100%">Search</button></div>   
+            <div class="col-12 col-xl-2 "> <button class="btn btn-danger" type="submit" style="width:100%">Clear</button></div>    
+ 
+          </div>              
+        </form>        
+    </div>
+   
+
+  <ul class="text-center" >      
+    <li class="row mt-2" *ngFor="let job of jobs2">        
+      <section class="col-12">
+        <a class="row" (click)="onSelectJob(job)"> 
+          <span class="col-md-2 col-4" style="border-right: #e9ecef solid 3px;">{{job.companyTitle}}</span>
+          <span class="col-md-2 d-none d-md-inline" style="border-right: #e9ecef solid 3px;">{{job.dateCreated}}</span>
+          <span class="col-6" style="border-right: #e9ecef solid 3px;">{{job.jobTitle}}</span>
+          <span class="col-2">{{job.location}}</span>
         </a>
-        </section>
+      </section>
     </li>
   </ul>
 </div>
+
+<app-careerdetail [selectedJob]="theJob" (jobExit)="onJobExit()"></app-careerdetail>
+
 </body>
+
+

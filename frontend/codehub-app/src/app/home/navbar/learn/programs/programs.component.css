@@ -13,11 +13,11 @@ a {
 }
 
 form {
-    width: 20%;
-   
+    width: 50%;  
+    transform: translateX(20%); 
 }
 
 form button {
-    width:120%;
-    transform: translateX(-10%);
+    width:60%;
+    transform: translateX(0%);
 }

@@ -10,12 +10,28 @@ import { Router} from '@angular/router';
 })
 
 export class MyprofileComponent implements OnInit {
-  user: User;
+  user: any;
 
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() { 
-    this.user = new User( "dasda", "dasda", ["java","javascript"], "dasda", "6971234567", "email", null, null, 'GR', null, null, true,  "dasda",  "dasda", "dasda");           
+    this.user = {  
+        firstName: "firstName",
+        lastName: "lastName",
+        // userTechstack: ["java","javascript"],
+        linkedinPath: "linkedinPath",
+        phoneNumber: "6971234567",
+        email: "email@email.gr",
+        password: "password",
+        // roleName: "roleName",
+        country: "GR",
+        dateCreated : new Date,
+        latestLogin: new Date,
+        isActive: true,
+        stackOverflowPath: "dasda",
+        gitPath: "dasda",
+        username: "dasda",
+    };           
   }
 
   // getUser(theEmail: string) {

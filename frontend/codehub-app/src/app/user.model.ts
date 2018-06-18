@@ -4,37 +4,43 @@ export class User {
   password: string;
   firstName: string;
   lastName: string;
-  country: string;    
+  countryIsoCode: string;
+  isActive: Boolean; 
+  dateCreated : Date;
+  latestLogin: Date;  
+  phoneNumber: string;
+  status: string; 
+  internalComments: string;
+  cvPath: string;  
+  avatarPath: string;
   linkedinPath: string;
   stackOverflowPath: string;
   gitPath: string;
-  phoneNumber: string;
-  userTechstack: string[];
-      
-  roleName: string;    
-  dateCreated : Date;
-  latestLogin: Date;
-  isActive: Boolean;
+
+  // userTechstack: string[];      
+  // roleName: string;  ->  candidate / internal
+  // status -> ?? e.g. Phone Interest??
   
-  constructor(firstName: string, lastName: string, userTechstack: string[], linkedinPath: string, phoneNumber: string, 
-    email: string, password: string, roleName: string, country: string, dateCreated: Date, latestLogin: Date, isActive: Boolean, 
-    stackOverflowPath: string, gitPath: string, username: string) {
-
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.userTechstack = userTechstack;
-    this.linkedinPath = linkedinPath;
-    this.phoneNumber = phoneNumber;
-    this.email = email;
-    this.password = password;
-    this.roleName = roleName;
-    this.country = country;
-    this.dateCreated = dateCreated;
-    this.latestLogin = latestLogin;
-    this.isActive = isActive;
-    this.stackOverflowPath = stackOverflowPath;
-    this.gitPath = gitPath;
-    this.username = username;
-
+  
+  
+  constructor(email: string, username: string, password: string, firstName: string,lastName: string, countryIsoCode: string, isActive: Boolean, dateCreated : Date, latestLogin: Date,
+    phoneNumber: string, status: string, internalComments: string, cvPath: string, avatarPath: string, linkedinPath: string, stackOverflowPath: string,  gitPath: string) {
+      this.email = email;
+      this.username = username;
+      this.password = password;
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.countryIsoCode = countryIsoCode;
+      this.isActive = isActive;
+      this.dateCreated = dateCreated;
+      this.latestLogin = latestLogin;
+      this.phoneNumber = phoneNumber;
+      this.status = status;
+      this.internalComments = internalComments;
+      this.cvPath = cvPath;
+      this.avatarPath = avatarPath;
+      this.linkedinPath = linkedinPath;
+      this.stackOverflowPath = stackOverflowPath;
+      this.gitPath = gitPath;
   }
 }

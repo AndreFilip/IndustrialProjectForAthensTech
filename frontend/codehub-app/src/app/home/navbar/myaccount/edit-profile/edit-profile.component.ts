@@ -11,21 +11,21 @@ import { Router} from '@angular/router';
   styleUrls: ['./edit-profile.component.css']
 })
 export class EditProfileComponent implements OnInit {
-  user: User;
+  user = {};
 
   constructor(private http: HttpClient, private userService: UserService, private router: Router) { }
 
   ngOnInit() {      
     // for testing purposes  
     this.user = {  
-      firstName: "dasda",
-        lastName: "dasda",
-        userTechstack: ["java","javascript"],
-        linkedinPath: "dasda",
+      firstName: "firstName",
+        lastName: "lastName",
+        // userTechstack: ["java","javascript"],
+        linkedinPath: "linkedinPath",
         phoneNumber: "6971234567",
-        email: "dasda@asd.gr",
-        password: "dasda",
-        roleName: "roleName",
+        email: "email@email.gr",
+        password: "password",
+        // roleName: "roleName",
         country: "GR",
         dateCreated : new Date,
         latestLogin: new Date,
@@ -38,8 +38,8 @@ export class EditProfileComponent implements OnInit {
   }
 
   submitChanges(form: NgForm) {
-    const changedUser = new User( form.value.firstName, form.value.lastName, form.value.techStack, form.value.linkedinLink, form.value.phoneNumber,
-      form.value.email, null /*password*/, null  /*role*/, 'GR', null  /*date created*/, new Date() /*latest login*/, true,  form.value.stackoverflowLink,  form.value.githubLink, form.value.username);
+    const changedUser = new User (form.value.email, form.value.username, form.value.password, form.value.firstName, form.value.lastName, form.value.country, true, new Date(), new Date(),
+    form.value.phoneNumber, 'status', 'internalComments', 'cvPath', 'avatarPath', form.value.linkedinLink, form.value.stackoverflowLink,  form.value.githubLink);   
 
     console.log(changedUser);
 
