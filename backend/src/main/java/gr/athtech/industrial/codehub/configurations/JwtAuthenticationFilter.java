@@ -3,6 +3,8 @@ package gr.athtech.industrial.codehub.configurations;
 import gr.athtech.industrial.codehub.services.CodeHubUserDetailsService;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.SignatureException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,6 +24,8 @@ import java.util.Arrays;
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
+    private static final Logger log = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
+
 
     public static final String TOKEN_PREFIX = "Bearer ";
     public static final String HEADER_STRING = "Authorization";
@@ -37,7 +41,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String header = req.getHeader(HEADER_STRING);
         String username = null;
         String authToken = null;
-        if (header != null && header.startsWith(TOKEN_PREFIX)) {
+        log.info("HEADER VALUES : {}", header.length());
+        if (header != null && header.startsWith(TOKEN_PREFIX) && header.length() > 20) {
             authToken = header.replace(TOKEN_PREFIX,"");
             try {
                 username = jwtTokenUtil.getUsernameFromToken(authToken);

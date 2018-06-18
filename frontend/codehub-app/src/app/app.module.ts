@@ -34,6 +34,9 @@ import {JobpostsService} from './jobposts.service';
 import {AuthGuard} from './auth.guard';
 import {TokenInterceptorService} from './token-interceptor.service';
 
+import {Interceptor} from "./app.interceptor";
+import {AuthService} from "./auth.service";
+import {TokenStorage} from "./token.storage";
 
 
 @NgModule({
@@ -70,8 +73,11 @@ import {TokenInterceptorService} from './token-interceptor.service';
   ],
   providers: [
     UserService,
+    Interceptor,
+    AuthService,
+    TokenStorage,
     JobpostsService,
-    MyprofileComponent, 
+    MyprofileComponent,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

@@ -6,6 +6,8 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -17,11 +19,14 @@ import java.util.function.Function;
 
 @Component
 public class JwtTokenUtil implements Serializable {
+    private static final Logger log = LoggerFactory.getLogger(JwtTokenUtil.class);
+
 
     public static final long ACCESS_TOKEN_VALIDITY_SECONDS = 5*60*60;
-    public static final String SIGNING_KEY = "codeHub0";
+    public static final String SIGNING_KEY = "code123Hub";
 
     public String getUsernameFromToken(String token) {
+        log.info("TOKEN {}", token);
         return getClaimFromToken(token, Claims::getSubject);
     }
 
@@ -51,10 +56,11 @@ public class JwtTokenUtil implements Serializable {
     }
 
     private String doGenerateToken(String subject) {
-
+        log.info("SUBJECT: {}", subject);
         Claims claims = Jwts.claims().setSubject(subject);
         claims.put("scopes", Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN")));
 
+        log.info("CLAIMS : {}", claims.toString());
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuer("https://www.codehub.gr")
