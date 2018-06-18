@@ -2,6 +2,7 @@ package gr.athtech.industrial.codehub.services;
 
 import gr.athtech.industrial.codehub.model.CodeHubUser;
 import gr.athtech.industrial.codehub.model.JobPosts;
+import gr.athtech.industrial.codehub.model.Programs;
 import gr.athtech.industrial.codehub.model.Role;
 import gr.athtech.industrial.codehub.repositories.RoleRepository;
 import gr.athtech.industrial.codehub.repositories.UserRepository;
@@ -94,5 +95,17 @@ public class CodeHubUserDetailsService implements UserDetailsService {
             user.setJobPosts(jobPostsSet);
             userRepository.save(user);
         }
+    }
+    
+    public void assignProgramsToUser(Programs programs, CodeHubUser user) {
+    	Set<Programs> programsSet = user.getPrograms();
+    	if(programsSet.contains(programs)) {
+    		log.info("User already registered for this program!");
+    	}else {
+    		programsSet.add(programs);
+    		user.setPrograms(programsSet);
+    		userRepository.save(user);
+    	}
+    	
     }
 }

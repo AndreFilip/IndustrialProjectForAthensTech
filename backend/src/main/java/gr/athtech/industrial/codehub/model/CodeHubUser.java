@@ -10,6 +10,7 @@ import java.util.Set;
 /**
  *
  * @author George Lalas
+ * @edit Panagiotis Kourempanas
  */
 @Entity
 @Table(name = "codehub_user")
@@ -89,6 +90,13 @@ public class CodeHubUser implements Serializable {
             joinColumns=@JoinColumn(name="userId"),
             inverseJoinColumns=@JoinColumn(name="job_posts_id"))
     private Set<JobPosts> jobPosts;
+    
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+    		name="programs_user",
+    		joinColumns=@JoinColumn(name="userId"),
+    		inverseJoinColumns=@JoinColumn(name="programs_id"))
+    private Set<Programs> programs;
 
     public CodeHubUser() {
     }
@@ -274,6 +282,14 @@ public class CodeHubUser implements Serializable {
     public void setJobPosts(Set<JobPosts> jobPosts) {
         this.jobPosts = jobPosts;
     }
+    
+    public Set<Programs> getPrograms() {
+    	return programs;
+    }
+    
+    public void setPrograms(Set<Programs> programs) {
+    	this.programs = programs;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -300,12 +316,13 @@ public class CodeHubUser implements Serializable {
                 Objects.equal(getStackOverflowPath(), that.getStackOverflowPath()) &&
                 Objects.equal(getGitPath(), that.getGitPath()) &&
                 Objects.equal(getUserTechstack(), that.getUserTechstack()) &&
-                Objects.equal(getJobPosts(), that.getJobPosts());
+                Objects.equal(getJobPosts(), that.getJobPosts()) &&
+                Objects.equal(getPrograms(), that.getPrograms());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId(), getEmail(), getUsername(), getPassword(), getRole(), getFirstName(), getLastName(), getCountry(), isActive, getDateCreated(), getLatestLogin(), getPhoneNumber(), getUserStatus(), getInternalComments(), getCvPath(), getAvatarPath(), getLinkedinPath(), getStackOverflowPath(), getGitPath(), getUserTechstack(), getJobPosts());
+        return Objects.hashCode(getId(), getEmail(), getUsername(), getPassword(), getRole(), getFirstName(), getLastName(), getCountry(), isActive, getDateCreated(), getLatestLogin(), getPhoneNumber(), getUserStatus(), getInternalComments(), getCvPath(), getAvatarPath(), getLinkedinPath(), getStackOverflowPath(), getGitPath(), getUserTechstack(), getJobPosts(), getPrograms());
     }
 
     @Override
@@ -332,6 +349,7 @@ public class CodeHubUser implements Serializable {
                 ", gitPath='" + gitPath + '\'' +
 //                ", userTechstack=" + userTechstack +
 //                ", jobPosts=" + jobPosts +
+//                ", programs=" + programs +
                 '}';
     }
 }
