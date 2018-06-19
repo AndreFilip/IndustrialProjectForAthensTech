@@ -1,6 +1,7 @@
 package gr.athtech.industrial.codehub.controllers;
 
 import gr.athtech.industrial.codehub.model.JobPosts;
+import gr.athtech.industrial.codehub.pojos.JobPostsView;
 import gr.athtech.industrial.codehub.repositories.JobPostsRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,12 +22,30 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/jobPosts")
 public class JobPostsController {
+	
 	private static final Logger log = LoggerFactory.getLogger(JobPostsController.class);
 	
 	@Autowired
 	private JobPostsRepository jobPostsRepository;
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(path = "/createJobPost")
+    public ResponseEntity<String> submitRegistration(@RequestBody JobPostsView jobPostsView) {
+		log.info("JSON RECEIVED: {}", jobPostsView.toString());
+		JobPosts jobPostsViewToSave = new JobPosts();
+		jobPostsViewToSave.setJobTitle(jobPostsView.getJobTitle());
+		jobPostsViewToSave.setLocation(jobPostsView.getLocation());
+		jobPostsViewToSave.setDescription(jobPostsViewToSave.getDescription());
+		jobPostsViewToSave.setCompanyTitle(jobPostsViewToSave.getCompanyTitle());
+		jobPostsViewToSave.setCompanyDescription(jobPostsViewToSave.getCompanyDescription());
+		jobPostsViewToSave.setQualifications(jobPostsViewToSave.getQualifications());
+		jobPostsViewToSave.setCompanyLogo(jobPostsViewToSave.getCompanyLogo());
+		return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body("Job Post Created");
+	}
+	
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(path = "/getAll")

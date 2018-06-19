@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS user_techstack;
+DROP TABLE IF EXISTS programs_user;
 DROP TABLE IF EXISTS job_posts_user;
 DROP TABLE IF EXISTS codehub_user;
 DROP TABLE IF EXISTS techstack;
@@ -8,7 +9,7 @@ DROP TABLE IF EXISTS country;
 DROP TABLE IF EXISTS job_posts;
 DROP TABLE IF EXISTS status;
 DROP TABLE IF EXISTS programs;
-DROP TABLE IF EXISTS programs_user;
+
 
 -- -----------------------------------------------------
 -- Table status

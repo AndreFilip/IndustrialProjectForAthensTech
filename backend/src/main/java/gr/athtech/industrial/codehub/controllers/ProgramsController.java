@@ -1,6 +1,7 @@
 package gr.athtech.industrial.codehub.controllers;
 
 import gr.athtech.industrial.codehub.model.Programs;
+import gr.athtech.industrial.codehub.pojos.ProgramsView;
 import gr.athtech.industrial.codehub.repositories.ProgramsRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,12 +22,29 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/programs")
 public class ProgramsController {
 	private static final Logger log = LoggerFactory.getLogger(ProgramsController.class);
 
 	@Autowired
 	private ProgramsRepository programsRepository;
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(path = "/createProgram")
+    public ResponseEntity<String> submitRegistration(@RequestBody ProgramsView programsView) {
+		log.info("JSON RECEIVED: {}", programsView.toString());
+		Programs programsViewToSave = new Programs();
+		programsViewToSave.setProgramTitle(programsViewToSave.getProgramTitle());
+		programsViewToSave.setPrice(programsViewToSave.getPrice());
+		programsViewToSave.setSmallDescription(programsViewToSave.getSmallDescription());
+		programsViewToSave.setMainDescription(programsViewToSave.getMainDescription());
+		programsViewToSave.setAdditionalInfo(programsViewToSave.getAdditionalInfo());
+		programsViewToSave.setCategory(programsViewToSave.getCategory());
+		programsViewToSave.setProgramLogo(programsViewToSave.getProgramLogo());
+		return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body("Program Created");
+	}
+	
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping(path = "/getAll")
