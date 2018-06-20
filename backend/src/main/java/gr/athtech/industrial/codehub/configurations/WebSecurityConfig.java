@@ -52,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable().
                 authorizeRequests()
                 .antMatchers("/api/token/generate-token","/index.html", "/", "/home"
-                        , "/login", "/api/userService/login","/api/userService/register"
+                        , "/login", "/api/userService/login","/api/userService/register", "/api/techstack/*"
                         ,"/api/country/*", "/api/jobPosts/*", "/logout").permitAll()
                 .anyRequest().authenticated()
                 .and()
