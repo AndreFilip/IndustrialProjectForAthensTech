@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from "rxjs/observable/of";
 import {Job} from './job.model';
+import {Country} from './country';
+
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -12,9 +14,9 @@ const httpOptions = {
 export class JobpostsService {
   private getJobsURL = 'http://localhost:8088/api/jobPosts/getAll';  
   private getJobsByJobTitleURL = 'http://localhost:8088/api/jobPosts/getJobPostsByJobTitle';
-  private getJobPostsByLocationURL = 'http://localhost:8088/api/jobPosts/getJobPostsByLocation';
-
-  
+  private getJobPostsByLocationURL = 'http://localhost:8088/api/jobPosts/getJobPostsByLocation';  
+  private getAllCountriesURL = 'http://localhost:8088/api/country/getAll'
+  private getAllStacksURL = 'http://localhost:8088/api/techstack/getAll'
 
   constructor(private http: HttpClient) { }
 
@@ -27,7 +29,10 @@ export class JobpostsService {
     return this.http.post<any>(this.applyForJobURL, JSON.stringify(userAndJobinfo), httpOptions);
   }
 
-  private getAllStacksURL = 'http://localhost:8088/api/techstack/getAll';  
+  getAllCountries(): Observable<any[]> {    
+    return this.http.get<any[]>(this.getAllCountriesURL);
+  }
+
   getAllStacks(): Observable<any[]> {    
     return this.http.get<any[]>(this.getAllStacksURL);
   }

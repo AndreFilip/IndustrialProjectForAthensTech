@@ -13,14 +13,7 @@
             <h4 class="col-12 mt-5">Professional Experience</h4>             
             <label for="techstack" class="col-12" >Choose your Techstack*
                 <select id="techstack" multiple class="form-control col-12" name="techStack" required ngModel>
-                  <option value="java">Java</option>
-                  <option value="csharp">C#</option>
-                  <option value="cplusplus">C++</option>
-                  <option value="javascript">Javascript</option>
-                  <option value="net">.NET</option>
-                  <option value="vuejs">Vue.Js</option>
-                  <option value="angularjs">Angular.Js</option>
-                  <option value="spring">Spring</option>                          
+                    <option [value]="stack.stack" *ngFor="let stack of stacks">{{stack.stack}}</option>                       
                 </select>
             </label>
                 <label for="linkedin" class="col-12">LinkedIn
@@ -42,10 +35,7 @@
                   <input id="number" type="number"  name="phoneNumber" class="form-control col-12" ngModel></label>             
               <label for="country" class="col-12" >Choose your country*
               <select id="country" name="country" class="form-control col-12" ngModel="GR" required>
-                <option value="GR">Greece</option>
-                <option value="AU">Australia</option>
-                <option value="CA">Canada</option>
-                <option value="US">USA</option>
+                <option [value]="c.isoCode" *ngFor="let c of countries">{{c.nameView}}</option> 
               </select></label>
               <div class="col-12">
               <p class="font-italic mt-3 text-right">Fields with * are required</p>               

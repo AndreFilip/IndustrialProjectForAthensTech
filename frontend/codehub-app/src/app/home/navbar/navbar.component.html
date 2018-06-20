@@ -1,6 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <img [src]="logo" width="160" height="50" class="d-inline-block align-top logo" style="cursor: pointer;" routerLink="/home">
-  <!-- <a class="navbar-brand" routerLink="/home">Code.Hub</a> -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -33,11 +32,11 @@
           My Account
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="/signup" *ngIf="!userService.loggedIn()" routerLinkActive="active-link">Sign up</a>
-          <a class="dropdown-item" routerLink="/login" *ngIf="!userService.loggedIn()" (click)="onDoLogin()"  routerLinkActive="active-link">Login</a>
-          <a class="dropdown-item" routerLink="/myprofile" *ngIf="userService.loggedIn()" routerLinkActive="active-link">My profile</a>
-          <div class="dropdown-divider" *ngIf="userService.loggedIn()"></div>
-          <a class="dropdown-item" routerLink="/logout" *ngIf="userService.loggedIn()" (click)="userService.logOut()" routerLinkActive="active-link">Log out</a>
+          <a class="dropdown-item" routerLink="/signup" *ngIf="!tokenStorage.getTokenBoolean()" routerLinkActive="active-link">Sign up</a>
+          <a class="dropdown-item" routerLink="/login" *ngIf="!tokenStorage.getTokenBoolean()" (click)="onDoLogin()"  routerLinkActive="active-link">Login</a>
+          <a class="dropdown-item" routerLink="/myprofile" *ngIf="tokenStorage.getTokenBoolean()" routerLinkActive="active-link">My profile</a>
+          <div class="dropdown-divider" *ngIf="tokenStorage.getTokenBoolean()"></div>
+          <a class="dropdown-item" routerLink="/logout" *ngIf="tokenStorage.getTokenBoolean()" (click)="tokenStorage.signOut()" routerLinkActive="active-link">Log out</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="/contact-us"  routerLinkActive="active-link">Contact us</a>
         </div>
