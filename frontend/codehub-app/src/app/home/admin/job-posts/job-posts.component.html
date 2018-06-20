@@ -1,3 +1,97 @@
-<p>
-  job-posts works!
-</p>
+<div class="jumbotron">
+  <h2 class="text-center">Job Post Creation Page</h2>
+</div>
+
+
+<div class="container">
+  <div class="row">
+<div class="col-md-12" >
+
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="form-group" >
+        <label for="Title"> Job Title</label>
+        <input
+        type="text"
+        class="form-control"
+        [ngModel]="job?.jobTitle"
+        name="jobTitle"
+        required
+        >
+      </div>
+
+      <label for="Title"> Location </label>
+      <div class="form-group" >
+        <input
+        type="text"
+        class="form-control"
+        [ngModel]="job?.location"
+        name="location"
+        required
+        >
+      </div>
+
+      <label for="Description">Job Description</label>
+      <div class="form-group">
+        <textarea
+        id="description"
+        cols="60"
+        rows="5"
+        class="form-control"
+        [ngModel]="job?.description"
+        name="jobDescription"
+        required
+        ></textarea>
+      </div>
+
+
+      <label for="Title"> Company Title </label>
+      <div class="form-group" >
+        <input
+        type="text"
+        class="form-control"
+        [ngModel]="job?.companyTitle"
+        name="companyTitle"
+        required
+        >
+      </div>
+
+      <label for="Description">Company Description</label>
+      <div class="form-group">
+        <textarea
+        id="description"
+        cols="30"
+        rows="2"
+        class="form-control"
+        [ngModel]="job?.companyDescription"
+        name="companyDescription"
+        required
+        ></textarea>
+      </div>
+
+      <label for="Title"> Qualifications </label>
+      <div class="form-group" >
+        <input
+        type="text"
+        class="form-control"
+        [ngModel]="job?.qualifications"
+        name="qualifications"
+        required
+        >
+      </div>
+
+      <label for="Title"> Company Jogo </label>
+      <div class="form-group" >
+        <input
+        type="text"
+        class="form-control"
+        [ngModel]="job?.companyLogo"
+        name="companyLogo"
+        required
+        >
+      </div>
+
+      <button style="float: right" type="submit" [disabled]="!f.valid" class="btn btn-outline-success btn-sm ml-1">Submit</button>
+    </form>
+    </div>
+  </div>
+</div>

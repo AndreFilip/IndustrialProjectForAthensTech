@@ -22,8 +22,7 @@ export class JobpostsService {
     return this.http.get<Job[]>(this.getJobsURL);
   }
 
-  //todo change endpoint
-  private applyForJobURL = 'http://localhost:8088/api/jobPosts/??';  
+  private applyForJobURL = 'http://localhost:8088/api/jobPosts/createJobPost';
   applyForJob(userAndJobinfo): Observable<any> {    
     return this.http.post<any>(this.applyForJobURL, JSON.stringify(userAndJobinfo), httpOptions);
   }
