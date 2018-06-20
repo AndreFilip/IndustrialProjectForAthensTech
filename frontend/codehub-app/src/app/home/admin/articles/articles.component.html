@@ -1,3 +1,100 @@
-<p>
-  articles works!
-</p>
+<div class="jumbotron">
+  <h2 class="text-center">Sign Up</h2>
+</div>
+
+
+<div class="container">
+  <div class="row">
+<div class="col-md-12" >
+
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="form-group" >
+        <label for="Title"> Program Title</label>
+        <input
+        type="text"
+        class="form-control"
+        [ngModel]="program.programTitle"
+        name="title"
+        required
+        >
+      </div>
+
+      <label for="Title"> Price </label>
+      <div class="form-group" >
+        <input
+        type="number"
+        class="form-control"
+        [ngModel]="program.price"
+        name="price"
+        required
+        >
+      </div>
+
+      <label for="Description">Small Description</label>
+      <div class="form-group">
+        <textarea
+        id="description"
+        cols="30"
+        rows="2"
+        class="form-control"
+        [ngModel]="program.smallDescription"
+        name="smallDescription"
+        required
+        ></textarea>
+      </div>
+
+      <label for="Description">Main Description</label>
+      <div class="form-group">
+        <textarea
+        id="description"
+        cols="60"
+        rows="5"
+        class="form-control"
+        [ngModel]="program.mainDescription"
+        name="mainDescription"
+        required
+        ></textarea>
+      </div>
+
+      <label for="Description">Additional Info</label>
+      <div class="form-group">
+        <textarea
+        id="description"
+        cols="30"
+        rows="2"
+        class="form-control"
+        [ngModel]="program.additionalInfo"
+        name="aditionalInfo"
+        required
+        ></textarea>
+      </div>
+
+      <label for="Title"> Category </label>
+      <div class="form-group" >
+        <input
+        type="text"
+        class="form-control"
+        [ngModel]="program.category"
+        name="category"
+        required
+        >
+      </div>
+
+      <label for="Title"> Program Logo </label>
+      <div class="form-group" >
+        <input
+        type="number"
+        class="form-control"
+        [ngModel]="program.programLogo"
+        name="programLogo"
+        required
+        >
+      </div>
+
+
+
+      <button style="float: right" type="submit" [disabled]="!f.valid" class="btn btn-outline-success btn-sm ml-1">Submit</button>
+    </form>
+    </div>
+  </div>
+</div>

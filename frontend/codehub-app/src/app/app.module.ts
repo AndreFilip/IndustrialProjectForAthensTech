@@ -40,6 +40,8 @@ import {Interceptor} from "./app.interceptor";
 import {AuthService} from "./auth.service";
 import {TokenStorage} from "./token.storage";
 import { AdminService } from './home/admin/admin-login/admin.service';
+import { ProgramService } from './programs.service';
+
 
 
 @NgModule({
@@ -84,11 +86,12 @@ import { AdminService } from './home/admin/admin-login/admin.service';
     MyprofileComponent,  /*Maybe this is needed here*/
     AuthGuard,
     AdminService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenStorage,
-      multi: true
-    }
+    ProgramService
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenStorage,
+    //   multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })

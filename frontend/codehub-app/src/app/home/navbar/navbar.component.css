@@ -4,6 +4,7 @@
 
 #navbarSupportedContent li a:hover {
 color: #FF4500 !important;
+cursor: pointer;
 }
 
 .logo:focus {
