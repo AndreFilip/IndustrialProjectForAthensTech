@@ -9,9 +9,23 @@ INSERT INTO status (name) VALUES ('Send Client');
 INSERT INTO status (name) VALUES ('Rejected');
 INSERT INTO status (name) VALUES ('Hired');
 
+INSERT INTO techstack(stack) VALUES ('JAVA');
 INSERT INTO techstack(stack) VALUES ('J2EE');
+INSERT INTO techstack(stack) VALUES ('C/C++');
+INSERT INTO techstack(stack) VALUES ('C#');
 INSERT INTO techstack(stack) VALUES ('.NET');
 INSERT INTO techstack(stack) VALUES ('Angular5');
+INSERT INTO techstack(stack) VALUES ('COBOL');
+INSERT INTO techstack(stack) VALUES ('CobolScript');
+INSERT INTO techstack(stack) VALUES ('JavaScript');
+INSERT INTO techstack(stack) VALUES ('JScript');
+INSERT INTO techstack(stack) VALUES ('PHP');
+INSERT INTO techstack(stack) VALUES ('Python');
+INSERT INTO techstack(stack) VALUES ('DevOps');
+INSERT INTO techstack(stack) VALUES ('MySQL');
+INSERT INTO techstack(stack) VALUES ('NoSQL');
+INSERT INTO techstack(stack) VALUES ('MongoDB');
+INSERT INTO techstack(stack) VALUES ('R');
 
 
 INSERT INTO country (id, isocode, namecapital, nameview, isocode3, numcode, phonecode) VALUES

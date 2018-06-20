@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 
 @RestController
@@ -57,7 +58,7 @@ public class JobPostsController {
             }
         }
         return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(jobPosts);
-    }
+     }
 
     @CrossOrigin(origins = "http://localhost:4200")
  	@GetMapping(path = "/getJobPostsByJobTitle/{jobTitle}")
@@ -68,7 +69,7 @@ public class JobPostsController {
  			 return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(jobPosts);
  		}
  		return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(jobPosts);
- 	   }
+ 	 }
    
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(path = "/getJobPostsByLocation/{location}")
@@ -79,7 +80,7 @@ public class JobPostsController {
 			 return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(jobPosts);
 		}
 		return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(jobPosts);
-	    }
+	 }
     
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(path = "/getJobPostsByQualifications/{qualifications}")
@@ -90,7 +91,7 @@ public class JobPostsController {
    			 return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(jobPosts);
    		}
    		return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(jobPosts);
-   	    }
+   	 }
     
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(path = "/getJobPostsByCompanyTitle/{companyTitle}")
@@ -99,9 +100,18 @@ public class JobPostsController {
     	if(jobPosts.isEmpty()) {
       		 //TODO: CHANGE RESPONSE WITH ERROR API IMPLEMENTATION
       			 return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(jobPosts);
-      		}
-      		return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(jobPosts);
-      	    }
+      	}
+      	return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(jobPosts);
+     }
     
-    //TODO: ADD JOBPOSTS POST END POINT
-    }
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(path = "/getJobPostsByDateCreated/{dateCreated}")
+    public ResponseEntity<List<JobPosts>> getJobPostsByDateCreated(@PathVariable Date dateCreated){
+    	List<JobPosts> jobPosts = jobPostsRepository.findJobPostsByDateCreated(dateCreated);
+    	if(jobPosts.isEmpty()) {
+      		 //TODO: CHANGE RESPONSE WITH ERROR API IMPLEMENTATION
+      			 return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(jobPosts);
+      	}
+      	return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(jobPosts);
+     }
+}

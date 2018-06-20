@@ -29,6 +29,7 @@ import java.util.Set;
 /**
  *
  * @author George Lalas
+ * @edit Panagiotis Kourempanas
  */
 @Service("userService")
 public class CodeHubUserDetailsService implements UserDetailsService {

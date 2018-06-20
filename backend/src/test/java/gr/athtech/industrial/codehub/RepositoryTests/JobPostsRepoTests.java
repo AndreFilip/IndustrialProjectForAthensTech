@@ -7,6 +7,7 @@ import gr.athtech.industrial.codehub.repositories.UserRepository;
 import gr.athtech.industrial.codehub.services.CodeHubUserDetailsService;
 
 import java.util.List;
+import java.util.Date;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,6 +41,13 @@ public class JobPostsRepoTests {
         		"TEST COMP TITLE2", "TEST COMP DESC2", "TEST QUALIFICATIONS 2", "TEST COMP LOGO 2");
         jobPostsRepository.save(jobPost2);
         }
+    
+    @Test
+    public void assignUserForJobPostTest(){
+        JobPosts jobPosts = jobPostsRepository.findById(1l).get();
+        CodeHubUser codeHubUser = userRepository.findUserByUsername("user0");
+        codeHubUserDetailsService.assignJobPostsToUser(jobPosts, codeHubUser);
+    }
     
     @Test
     public void getJobPostByJobTitleTest(){
@@ -82,10 +90,5 @@ public class JobPostsRepoTests {
 	   }
    }
 */
-    @Test
-    public void assignUserForJobPostTest(){
-        JobPosts jobPosts = jobPostsRepository.findById(1l).get();
-        CodeHubUser codeHubUser = userRepository.findUserByUsername("user0");
-        codeHubUserDetailsService.assignJobPostsToUser(jobPosts, codeHubUser);
-    }
+
 }
