@@ -1,6 +1,7 @@
 package gr.athtech.industrial.codehub.controllers;
 
 import gr.athtech.industrial.codehub.model.CodeHubUser;
+import gr.athtech.industrial.codehub.model.Role;
 import gr.athtech.industrial.codehub.pojos.User;
 import gr.athtech.industrial.codehub.repositories.CountryRepository;
 import gr.athtech.industrial.codehub.repositories.RoleRepository;
@@ -72,6 +73,13 @@ public class UserController {
     public ResponseEntity<CodeHubUser> getUserByEmail(@PathVariable String email) {
        CodeHubUser user = userRepository.findUserByEmail(email);
        return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(user);
+    }
+    
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(path = "/getCodeHubUserByRole")
+    public ResponseEntity<List<CodeHubUser>> getCodeHubUserByRole(@PathVariable Role role) {
+    	List<CodeHubUser> userList1 = userRepository.findCodeHubUserByRole(role);
+        return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body(userList1);
     }
 
     @CrossOrigin
