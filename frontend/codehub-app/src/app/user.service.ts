@@ -35,7 +35,7 @@ export class UserService {
   }
 
   //todo change endpoint
-  private getUsersURL = 'http://localhost:8088/api/userService/';  
+  private getUsersURL = 'http://localhost:8088/api/userService/getAll';  
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.getUsersURL);
   }

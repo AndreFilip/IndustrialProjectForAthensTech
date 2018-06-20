@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AdminService } from './home/admin/admin-login/admin.service';
 
 
 const TOKEN_KEY = 'AuthToken';
@@ -6,11 +7,12 @@ const TOKEN_KEY = 'AuthToken';
 @Injectable()
 export class TokenStorage {
 
-  constructor() { }
+  constructor(private adminService: AdminService) { }
 
   public signOut() {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.clear();
+    this.adminService.logedInAdmin.next(false);
   }
 
   public saveToken(token: string) {

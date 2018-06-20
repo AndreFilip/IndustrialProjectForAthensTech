@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate {
   constructor (private adminService: AdminService, private router: Router) {}
 
   canActivate(): boolean {
-    if (this.adminService.logedInAdmin) {
+    if (this.adminService.logedInAdmin.value) {
       return true
     } else {
       alert("Log in/Sign up in order to see this page.");

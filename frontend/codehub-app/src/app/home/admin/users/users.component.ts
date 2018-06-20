@@ -14,9 +14,29 @@ export class UsersComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-  this.userService.getUsers().subscribe(x => this.users = x);
-  }
-
+  this.userService.getUsers().subscribe(x => this.users = x , error => { 
+                                                      this.users =  [{
+                                                                    email: "email",
+                                                                    username: "username",
+                                                                    password: "password",
+                                                                    firstName: "firstName",
+                                                                    lastName: "lastName",
+                                                                    countryIsoCode: "countryIsoCode",
+                                                                    isActive: true,
+                                                                    dateCreated : new Date(),
+                                                                    latestLogin: new Date(),  
+                                                                    phoneNumber: "phoneNumber",
+                                                                    status: "status",
+                                                                    internalComments: "internalComments",
+                                                                    cvPath: "cvPath",
+                                                                    avatarPath: "avatarPath",
+                                                                    linkedinPath: "linkedinPath",
+                                                                    stackOverflowPath: "stackOverflowPath",
+                                                                    gitPath: "gitPath"
+                                                                    }];
+                                                                    }
+     );
+  }                                                          
 
 
 }

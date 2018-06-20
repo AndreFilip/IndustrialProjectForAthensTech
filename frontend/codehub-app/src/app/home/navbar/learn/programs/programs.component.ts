@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {JobpostsService} from '../../../../jobposts.service';
-
+import {ProgramService} from '../../../../programs.service';
+import { Program } from '../../../../program.model';
 
 @Component({
   selector: 'app-programs',
@@ -12,26 +13,26 @@ export class ProgramsComponent implements OnInit {
   react: string;
 
   teckstacks: any [];
+  programs: Program [];
 
-  constructor(private jobpostsService: JobpostsService) {
+  constructor(private jobpostsService: JobpostsService, private programService: ProgramService) {
     this.java_seminar = '/assets/images/java_seminar.png';
     this.react = '/assets/images/react.png';
    }
 
   ngOnInit() {
     this.getAllStacks();
+    this.getPrograms();
   }
 
   getAllStacks() {
     this.jobpostsService.getAllStacks().subscribe(
       response => { 
                   console.log(response);
-                  // alert("Successfully fetched teckstacks.");              
                   this.teckstacks = response;
                   } ,
       err =>      {
                   console.log(err);
-                  // alert("Unsuccessfully fetched teckstacks and hardcode-generated.");
                   this.teckstacks = [
                                      {stack:"randomStack"},
                                      {stack:"Error."},
@@ -42,5 +43,36 @@ export class ProgramsComponent implements OnInit {
                   }
     );
   }
-
+  
+  getPrograms() {
+    this.programService.getPrograms().subscribe(
+      response => { 
+                  console.log(response);
+                  this.programs = response;
+                  } ,
+      err =>      {
+                  console.log(err);
+                  this.programs = [  { programTitle:"programTitle",
+                                      price: "price",
+                                      smallDescription: "smallDescription",
+                                      mainDescription: "mainDescription",
+                                      additionalInfo: "additionalInfo",
+                                      category:"category",
+                                      programLogo: "programLogo"
+                                      },
+                                      { programTitle:"programTitle2",
+                                      price: "price2",
+                                      smallDescription: "smallDescription2",
+                                      mainDescription: "mainDescription2",
+                                      additionalInfo: "additionalInfo2",
+                                      category:"category2",
+                                      programLogo: "programLogo2"
+                                      }
+                                     
+                                     
+                                    ];
+              
+                  }
+    );
+  }
 }

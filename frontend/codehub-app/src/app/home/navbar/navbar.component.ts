@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import {UserService} from '../../user.service';
 import {TokenStorage} from '../../token.storage';
+import { AdminService } from '../admin/admin-login/admin.service';
+
 
 
 @Component({
@@ -14,7 +16,7 @@ export class NavbarComponent implements OnInit {
   @Input() doLoginStatus: boolean;
   @Output() doLogin = new EventEmitter;
 
-  constructor(private tokenStorage: TokenStorage) {    
+  constructor(private tokenStorage: TokenStorage, private adminService: AdminService) {    
     this.logo = '/assets/images/logo.png'
    }
 

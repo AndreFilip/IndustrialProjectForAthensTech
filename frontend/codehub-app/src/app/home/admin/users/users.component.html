@@ -1,10 +1,15 @@
 <div class="card">
   <div class="card-header">
     <h5>
-      Applicans
+      Codehub Users
     </h5>
   </div>
-  <table style="cursor: pointer;" class="table table-bordered">
+  <!-- <div *ngFor="let user of users;">
+    {{user.firstName}}  {{user.lastName}}
+    {{user.email}}
+    {{user.phoneNumber}}
+    </div> -->
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th scope="col">Name</th>
@@ -12,8 +17,8 @@
         <th scope="col">Phone Number</th>
       </tr>
     </thead>
-    <tbody *ngFor="let user of users;">
-      <tr>
+    <tbody >
+      <tr *ngFor="let user of users;">
         <td>{{user.firstName}}  {{user.lastName}}</td>
         <td>{{user.email}}</td>
         <td>{{user.phoneNumber}}</td>

@@ -32,11 +32,11 @@
           My Account
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="/signup" *ngIf="!tokenStorage.getTokenBoolean()" routerLinkActive="active-link">Sign up</a>
-          <a class="dropdown-item" routerLink="/login" *ngIf="!tokenStorage.getTokenBoolean()" (click)="onDoLogin()"  routerLinkActive="active-link">Login</a>
-          <a class="dropdown-item" routerLink="/myprofile" *ngIf="tokenStorage.getTokenBoolean()" routerLinkActive="active-link">My profile</a>
-          <div class="dropdown-divider" *ngIf="tokenStorage.getTokenBoolean()"></div>
-          <a class="dropdown-item" routerLink="/logout" *ngIf="tokenStorage.getTokenBoolean()" (click)="tokenStorage.signOut()" routerLinkActive="active-link">Log out</a>
+          <a class="dropdown-item" routerLink="/signup" *ngIf="!tokenStorage.getTokenBoolean() && !adminService.logedInAdmin.value" routerLinkActive="active-link">Sign up</a>
+          <a class="dropdown-item" routerLink="/login" *ngIf="!tokenStorage.getTokenBoolean() && !adminService.logedInAdmin.value" (click)="onDoLogin()"  routerLinkActive="active-link">Login</a>
+          <a class="dropdown-item" routerLink="/myprofile" *ngIf="tokenStorage.getTokenBoolean() || adminService.logedInAdmin.value" routerLinkActive="active-link">My profile</a>
+          <div class="dropdown-divider" *ngIf="tokenStorage.getTokenBoolean() || adminService.logedInAdmin.value"></div>
+          <a class="dropdown-item" routerLink="/logout" *ngIf="tokenStorage.getTokenBoolean() || adminService.logedInAdmin.value" (click)="tokenStorage.signOut()" routerLinkActive="active-link">Log out</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="/contact-us"  routerLinkActive="active-link">Contact us</a>
         </div>

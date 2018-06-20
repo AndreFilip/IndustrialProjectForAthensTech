@@ -23,15 +23,17 @@ export class AdminLoginComponent implements OnInit {
   ngOnInit() {}
 
   onLoginAdmin(form: NgForm) {
+    console.log(this.adminService.logedInAdmin);    
     this.admin.userName = form.value.userName;
     this.admin.password = form.value.password;
-    if (this.admin = this.secureAdmin) {
+    if (this.admin.userName == this.secureAdmin.userName && this.admin.password == this.secureAdmin.password) {
+      // console.log(this.adminService.logedInAdmin);
       this.adminService.logedInAdmin.next(true);
       this.router.navigate(['/admin-dashboard']);
     } else {
       console.log(this.admin);
 
-      alert('wrong credential');
+      alert('Wrong credentials');
     }
   }
 }

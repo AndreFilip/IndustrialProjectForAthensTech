@@ -16,12 +16,12 @@ export class ProgramService {
   constructor(private http: HttpClient, private router: Router) {}
 
 
-  private createProgramURL = 'http://localhost:8088//api/programs/createProgram';
+  private createProgramURL = 'http://localhost:8088/api/programs/createProgram';
   createProgram(program: Program): any {
     return this.http.post<any>(this.createProgramURL, JSON.stringify(program), httpOptions);
   }
 
-  private getProgramsURL = 'http://localhost:8088/api/programs/getAll/';
+  private getProgramsURL = 'http://localhost:8088/api/programs/getAll';
   getPrograms(): Observable<Program[]> {
     return this.http.get<Program[]>(this.getProgramsURL);
   }
