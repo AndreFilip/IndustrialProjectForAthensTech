@@ -1,8 +1,11 @@
+// Modules and libraries
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
 
-
+// Components
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './home/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -17,9 +20,7 @@ import { MyaccountComponent } from './home/navbar/myaccount/myaccount.component'
 import { LoginComponent } from './home/navbar/myaccount/login/login.component';
 import { SignupComponent } from './home/navbar/myaccount/signup/signup.component';
 import { ContactUsComponent } from './home/navbar/myaccount/contact-us/contact-us.component';
-import { AppRoutingModule } from './app-routing.module';
 import { InstructorsComponent } from './home/navbar/learn/instructors/instructors.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyprofileComponent } from './home/navbar/myaccount/myprofile/myprofile.component';
 import { AdminComponent } from './home/admin/admin.component';
 import { ArticlesComponent } from './home/admin/articles/articles.component';
@@ -27,16 +28,18 @@ import { JobPostsComponent } from './home/admin/job-posts/job-posts.component';
 import { UsersComponent } from './home/admin/users/users.component';
 import { EditProfileComponent } from './home/navbar/myaccount/edit-profile/edit-profile.component';
 import { CareerdetailComponent } from './home/navbar/careerdetail/careerdetail.component';
+import { AdminLoginComponent } from './home/admin/admin-login/admin-login.component';
 
+
+
+// Services
 import {UserService} from './user.service';
 import {JobpostsService} from './jobposts.service';
-
 import {AuthGuard} from './auth.guard';
-import {TokenInterceptorService} from './token-interceptor.service';
-
 import {Interceptor} from "./app.interceptor";
 import {AuthService} from "./auth.service";
 import {TokenStorage} from "./token.storage";
+import { AdminService } from './home/admin/admin-login/admin.service';
 
 
 @NgModule({
@@ -63,6 +66,7 @@ import {TokenStorage} from "./token.storage";
     UsersComponent,
     EditProfileComponent,
     CareerdetailComponent,
+    AdminLoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,11 +81,12 @@ import {TokenStorage} from "./token.storage";
     AuthService,
     TokenStorage,
     JobpostsService,
-    MyprofileComponent,
+    MyprofileComponent,  /*Maybe this is needed here*/
     AuthGuard,
+    AdminService,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptorService,
+      useClass: TokenStorage,
       multi: true
     }
   ],

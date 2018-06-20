@@ -23,41 +23,31 @@ export class UserService {
   }  
 
   //todo change endpoint
+  // tslint:disable-next-line:member-ordering
   private loginURL = 'http://localhost:8088/api/userService/login';  
   loginUser(user): any {
     return this.http.post<any>(this.loginURL, JSON.stringify(user) , httpOptions);
   }
 
   //todo change endpoint
+  // tslint:disable-next-line:member-ordering
   private editProfileURL = 'http://localhost:8088/api/userService/';
   editProfile(user: User): any {
     return this.http.put(this.editProfileURL,  JSON.stringify(user), httpOptions);
   }
 
   //todo change endpoint
+  // tslint:disable-next-line:member-ordering
   private getUsersURL = 'http://localhost:8088/api/userService/';  
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.getUsersURL);
   }
 
-  private getUserURL = 'http://localhost:8088/api/userService/getUserByEmai';   
+  // tslint:disable-next-line:member-ordering
+  private getUserURL = 'http://localhost:8088/api/userService/getUserByEmail';   
   getUser(email: string): Observable<User> {
     return this.http.get<User>(this.getUserURL + "/" + email);
   }
-
-  loggedIn() {
-    return !!localStorage.getItem("token");    
-  }
-
-  getToken() {
-    return localStorage.getItem("token");    
-  }
-
-  logOut() {
-    localStorage.removeItem("token");    
-    alert('You successfully logged out.');
-    this.router.navigate['/'];
-  } 
 
 }
 

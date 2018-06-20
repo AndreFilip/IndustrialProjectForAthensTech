@@ -1,3 +1,23 @@
-<p>
-  users works!
-</p>
+<div class="card">
+  <div class="card-header">
+    <h5>
+      Applicans
+    </h5>
+  </div>
+  <table style="cursor: pointer;" class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone Number</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let user of users;">
+      <tr>
+        <td>{{user.firstName}}  {{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phoneNumber}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
