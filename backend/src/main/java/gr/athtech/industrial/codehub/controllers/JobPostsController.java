@@ -36,6 +36,7 @@ public class JobPostsController {
     @PostMapping(path = "/createJobPost")
     public ResponseEntity<String> submitRegistration(@RequestBody JobPostsView jobPostsView) {
 		log.info("JSON RECEIVED: {}", jobPostsView.toString());
+		Date saveDate = new Date();
 		JobPosts jobPostsViewToSave = new JobPosts();
 		jobPostsViewToSave.setJobTitle(jobPostsView.getJobTitle());
 		jobPostsViewToSave.setLocation(jobPostsView.getLocation());
@@ -44,6 +45,8 @@ public class JobPostsController {
 		jobPostsViewToSave.setCompanyDescription(jobPostsViewToSave.getCompanyDescription());
 		jobPostsViewToSave.setQualifications(jobPostsViewToSave.getQualifications());
 		jobPostsViewToSave.setCompanyLogo(jobPostsViewToSave.getCompanyLogo());
+		jobPostsViewToSave.setDateCreated(saveDate);
+		jobPostsRepository.save(jobPostsViewToSave);
 		return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body("Job Post Created");
 	}
 	

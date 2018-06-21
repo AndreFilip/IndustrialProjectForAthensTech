@@ -47,14 +47,15 @@ public class UserController {
         userToSave.setEmail(user.getEmail());
         userToSave.setUsername(user.getEmail());
         userToSave.setPassword(user.getPassword());
-        userToSave.setRole(roleRepository.findRoleByName(user.getRoleName()));
+        userToSave.setRole(roleRepository.findRoleByName("candidate"));
         userToSave.setFirstName(user.getFirstName());
         userToSave.setLastName(user.getLastName());
         userToSave.setCountry(countryRepository.findCountryByIsoCode(user.getCountryIsoCode()));
         userToSave.setActive(true);
         userToSave.setDateCreated(new Date());
         userToSave.setLatestLogin(new Date());
-        if(codeHubUserDetailsService.saveUser(userToSave, user.getRoleName()) == 0){
+
+        if(codeHubUserDetailsService.saveUser(userToSave, "candidate") == 0){
             return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body("Registration Completed");
         }else{
             return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body("Registration Failed");

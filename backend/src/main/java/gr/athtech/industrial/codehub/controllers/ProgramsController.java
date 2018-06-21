@@ -35,13 +35,14 @@ public class ProgramsController {
     public ResponseEntity<String> submitRegistration(@RequestBody ProgramsView programsView) {
 		log.info("JSON RECEIVED: {}", programsView.toString());
 		Programs programsViewToSave = new Programs();
-		programsViewToSave.setProgramTitle(programsViewToSave.getProgramTitle());
-		programsViewToSave.setPrice(programsViewToSave.getPrice());
-		programsViewToSave.setSmallDescription(programsViewToSave.getSmallDescription());
-		programsViewToSave.setMainDescription(programsViewToSave.getMainDescription());
-		programsViewToSave.setAdditionalInfo(programsViewToSave.getAdditionalInfo());
-		programsViewToSave.setCategory(programsViewToSave.getCategory());
-		programsViewToSave.setProgramLogo(programsViewToSave.getProgramLogo());
+		programsViewToSave.setProgramTitle(programsView.getProgramTitle());
+		programsViewToSave.setPrice(programsView.getPrice());
+		programsViewToSave.setSmallDescription(programsView.getSmallDescription());
+		programsViewToSave.setMainDescription(programsView.getMainDescription());
+		programsViewToSave.setAdditionalInfo(programsView.getAdditionalInfo());
+		programsViewToSave.setCategory(programsView.getCategory());
+		programsViewToSave.setProgramLogo(programsView.getProgramLogo());
+		programsRepository.save(programsViewToSave);
 		return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).body("Program Created");
 	}
 	
