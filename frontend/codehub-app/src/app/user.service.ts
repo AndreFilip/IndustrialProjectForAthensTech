@@ -29,10 +29,10 @@ export class UserService {
   }
 
   //todo change endpoint
-  private editProfileURL = 'http://localhost:8088/api/userService/';
-  editProfile(user: User): any {
-    return this.http.put(this.editProfileURL,  JSON.stringify(user), httpOptions);
-  }
+  // private editProfileURL = 'http://localhost:8088/api/userService/';
+  // editProfile(user: User): any {
+  //   return this.http.put(this.editProfileURL,  JSON.stringify(user), httpOptions);
+  // }
 
   //todo change endpoint
   private getUsersURL = 'http://localhost:8088/api/userService/getAll';  

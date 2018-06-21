@@ -30,8 +30,6 @@ import { EditProfileComponent } from './home/navbar/myaccount/edit-profile/edit-
 import { CareerdetailComponent } from './home/navbar/careerdetail/careerdetail.component';
 import { AdminLoginComponent } from './home/admin/admin-login/admin-login.component';
 
-
-
 // Services
 import {UserService} from './user.service';
 import {JobpostsService} from './jobposts.service';
@@ -68,7 +66,7 @@ import { ProgramService } from './programs.service';
     UsersComponent,
     EditProfileComponent,
     CareerdetailComponent,
-    AdminLoginComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +81,7 @@ import { ProgramService } from './programs.service';
     AuthService,
     TokenStorage,
     JobpostsService,
-    MyprofileComponent,  /*Maybe this is needed here*/
+    MyprofileComponent,  
     AuthGuard,
     AdminService,
     ProgramService

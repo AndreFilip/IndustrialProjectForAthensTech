@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h2 class="text-center">Sign Up</h2>
+  <h2 class="text-center">Program Creation Page</h2>
 </div>
 
 
@@ -13,8 +13,8 @@
         <input
         type="text"
         class="form-control"
-        [ngModel]="program.programTitle"
-        name="title"
+        ngModel
+        name="programTitle"
         required
         >
       </div>
@@ -24,7 +24,7 @@
         <input
         type="number"
         class="form-control"
-        [ngModel]="program.price"
+        ngModel
         name="price"
         required
         >
@@ -32,12 +32,11 @@
 
       <label for="Description">Small Description</label>
       <div class="form-group">
-        <textarea
-        id="description"
+        <textarea       
         cols="30"
         rows="2"
         class="form-control"
-        [ngModel]="program.smallDescription"
+        ngModel
         name="smallDescription"
         required
         ></textarea>
@@ -45,12 +44,11 @@
 
       <label for="Description">Main Description</label>
       <div class="form-group">
-        <textarea
-        id="description"
+        <textarea        
         cols="60"
         rows="5"
         class="form-control"
-        [ngModel]="program.mainDescription"
+        ngModel
         name="mainDescription"
         required
         ></textarea>
@@ -63,7 +61,7 @@
         cols="30"
         rows="2"
         class="form-control"
-        [ngModel]="program.additionalInfo"
+        ngModel
         name="aditionalInfo"
         required
         ></textarea>
@@ -74,7 +72,7 @@
         <input
         type="text"
         class="form-control"
-        [ngModel]="program.category"
+        ngModel
         name="category"
         required
         >
@@ -83,17 +81,14 @@
       <label for="Title"> Program Logo </label>
       <div class="form-group" >
         <input
-        type="number"
+        type="file"
         class="form-control"
-        [ngModel]="program.programLogo"
+        ngModel
         name="programLogo"
-        required
+        
         >
       </div>
-
-
-
-      <button style="float: right" type="submit" [disabled]="!f.valid" class="btn btn-outline-success btn-sm ml-1">Submit</button>
+      <button style="float:right" type="submit" [disabled]="!f.valid" class="btn btn-outline-success mb-5">Submit</button>
     </form>
     </div>
   </div>

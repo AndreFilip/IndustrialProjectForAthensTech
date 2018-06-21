@@ -36,14 +36,14 @@ const appRoutes: Routes = [
   {path: 'myprofile', component: MyprofileComponent },
   {path: 'edit-profile', component: EditProfileComponent},
   {path: 'admin', component: AdminLoginComponent },
-  {path: 'admin-dashboard', component: AdminComponent},
-  {path: 'admin-users', component: UsersComponent},
-  {path: 'admin-jobs-post', component: JobPostsComponent},
-  {path: 'admin-articles-post', component: ArticlesComponent},
-  // {path: 'admin-dashboard', component: AdminComponent, canActivate: [AuthGuard]},
-  // {path: 'admin-users', component: UsersComponent, canActivate: [AuthGuard]},
-  // {path: 'admin-jobs-post', component: JobPostsComponent, canActivate: [AuthGuard]},
-  // {path: 'admin-articles-post', component: ArticlesComponent, canActivate: [AuthGuard]},
+  // {path: 'admin-dashboard', component: AdminComponent},
+  // {path: 'admin-users', component: UsersComponent},
+  // {path: 'admin-jobs-post', component: JobPostsComponent},
+  // {path: 'admin-articles-post', component: ArticlesComponent},
+  {path: 'admin-dashboard', component: AdminComponent, canActivate: [AuthGuard]},
+  {path: 'admin-users', component: UsersComponent, canActivate: [AuthGuard]},
+  {path: 'admin-jobs-post', component: JobPostsComponent, canActivate: [AuthGuard]},
+  {path: 'admin-articles-post', component: ArticlesComponent, canActivate: [AuthGuard]},
   {path: '**' , redirectTo: '/home', pathMatch: 'full'}
 ];
 

@@ -19,10 +19,8 @@ export class User {
 
   // userTechstack: string[];      
   // roleName: string;  ->  candidate / internal
-  // status -> ?? e.g. Phone Interest??
-  
-  
-  
+  // status -> ?? e.g. Phone Interest?? 
+    
   constructor(email: string, username: string, password: string, firstName: string,lastName: string, countryIsoCode: string, isActive: Boolean, dateCreated : Date, latestLogin: Date,
     phoneNumber: string, status: string, internalComments: string, cvPath: string, avatarPath: string, linkedinPath: string, stackOverflowPath: string,  gitPath: string) {
       this.email = email;

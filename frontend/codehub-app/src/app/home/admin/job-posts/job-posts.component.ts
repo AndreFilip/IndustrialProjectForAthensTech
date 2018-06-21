@@ -10,7 +10,6 @@ import { JobpostsService } from '../../../jobposts.service';
 })
 export class JobPostsComponent implements OnInit {
 
-  job: Job;
   constructor(private jobService: JobpostsService) { }
 
   ngOnInit() {
@@ -18,6 +17,7 @@ export class JobPostsComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     const value = form.value;
+
     const addJob = <Job> {
       jobTitle: value.jobTitle,
       location: value.location,
@@ -25,11 +25,25 @@ export class JobPostsComponent implements OnInit {
       companyTitle: value.companyTitle,
       companyDescription: value.companyDescription,
       qualifications: value.qualifications,
-      companyLogo: value.companyDescription
+      companyLogo: value.companyLogo
     };
-    this.jobService.applyForJob(addJob);
+
+    console.log(addJob);    
+
+    this.jobService.createJob(addJob).subscribe(res => {console.log(res)}, err => {console.log(err)});
+
     form.reset();
   }
 
-
 }
+
+//   JOB pojo backend
+
+//   private String jobTitle;
+//   private String location;
+//   private String description;
+//   private String companyTitle;
+//   private String companyDescription;
+//   private String qualifications;
+//   private String companyLogo;
+  

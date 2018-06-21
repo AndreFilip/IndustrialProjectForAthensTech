@@ -24,27 +24,22 @@ export class CareerdetailComponent implements OnInit {
     this.jobExit.emit();
   }
 
-  applyForJob(userAndJobinfo) {
-    this.jobpostsService.applyForJob(userAndJobinfo).subscribe(
-      response => { 
-                  console.log(response);
-                  alert("You applied successfully.");
-                  this.jobExit.emit();
-                  } ,
-      err =>      {
-                  console.log(err);
-                  alert("Something went wrong. You did not apply successfully.");                  
-                  }
-    );
+  // applyForJob(userAndJobinfo) {
+  //   this.jobpostsService.applyForJob(userAndJobinfo).subscribe(
+  //     response => { 
+  //                 console.log(response);
+  //                 alert("You applied successfully.");
+  //                 this.jobExit.emit();
+  //                 } ,
+  //     err =>      {
+  //                 console.log(err);
+  //                 alert("Something went wrong. You did not apply successfully.");                  
+  //                 }
+  //   );
 
-  }
-
-  // getJobsByJobTitle(): void {
-  //   const stringjobtitle = this.route.snapshot.paramMap.get('jobtitle');
-  //   this.jobpostsService.getJobsByJobTitle(stringjobtitle)
-  //     .subscribe(x => this.jobs = x);
   // }
 
+ 
 
 
 

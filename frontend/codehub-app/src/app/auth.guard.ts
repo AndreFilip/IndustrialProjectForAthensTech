@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
     if (this.adminService.logedInAdmin.value) {
       return true
     } else {
-      alert("Log in/Sign up in order to see this page.");
+      alert("Log in/Sign up in order to proceed admin.");
       this.router.navigate(['/admin'])
       return false
     }

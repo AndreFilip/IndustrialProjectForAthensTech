@@ -13,6 +13,7 @@ export class TokenStorage {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.clear();
     this.adminService.logedInAdmin.next(false);
+    alert("You have logged out.");
   }
 
   public saveToken(token: string) {

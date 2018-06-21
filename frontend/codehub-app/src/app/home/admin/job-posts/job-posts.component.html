@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h2 class="text-center">Job Post Creation Page</h2>
+  <h2 class="text-center">Job Creation Page</h2>
 </div>
 
 
@@ -13,7 +13,7 @@
         <input
         type="text"
         class="form-control"
-        [ngModel]="job?.jobTitle"
+        ngModel
         name="jobTitle"
         required
         >
@@ -24,7 +24,7 @@
         <input
         type="text"
         class="form-control"
-        [ngModel]="job?.location"
+        ngModel
         name="location"
         required
         >
@@ -37,7 +37,7 @@
         cols="60"
         rows="5"
         class="form-control"
-        [ngModel]="job?.description"
+        ngModel
         name="jobDescription"
         required
         ></textarea>
@@ -49,7 +49,7 @@
         <input
         type="text"
         class="form-control"
-        [ngModel]="job?.companyTitle"
+        ngModel
         name="companyTitle"
         required
         >
@@ -62,7 +62,7 @@
         cols="30"
         rows="2"
         class="form-control"
-        [ngModel]="job?.companyDescription"
+        ngModel
         name="companyDescription"
         required
         ></textarea>
@@ -73,7 +73,7 @@
         <input
         type="text"
         class="form-control"
-        [ngModel]="job?.qualifications"
+        ngModel
         name="qualifications"
         required
         >
@@ -82,15 +82,14 @@
       <label for="Title"> Company Jogo </label>
       <div class="form-group" >
         <input
-        type="text"
+        type="file"
         class="form-control"
-        [ngModel]="job?.companyLogo"
-        name="companyLogo"
-        required
+        ngModel
+        name="companyLogo"        
         >
       </div>
 
-      <button style="float: right" type="submit" [disabled]="!f.valid" class="btn btn-outline-success btn-sm ml-1">Submit</button>
+      <button style="float: right" type="submit" [disabled]="!f.valid" class="btn btn-outline-success ml-1 mb-5">Submit</button>
     </form>
     </div>
   </div>

@@ -10,8 +10,6 @@ import { ProgramService } from '../../../programs.service';
 })
 export class ArticlesComponent implements OnInit {
 
-  program: Program;
-
   constructor(private programService: ProgramService) { }
 
   ngOnInit() {
@@ -19,6 +17,7 @@ export class ArticlesComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     const value = form.value;
+
     const addProgram = <Program> {
       programTitle: value.programTitle,
       price: value.price,
@@ -28,7 +27,12 @@ export class ArticlesComponent implements OnInit {
       category: value.category,
       programLogo: value.programLogo
     };
-    this.programService.createProgram(addProgram);
+
+    console.log(addProgram);    
+    
+    this.programService.createProgram(addProgram).subscribe(x => {console.log(x);
+    });
+
     form.reset();
   }
 

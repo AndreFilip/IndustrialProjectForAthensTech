@@ -17,6 +17,8 @@ export class JobpostsService {
   private getJobPostsByLocationURL = 'http://localhost:8088/api/jobPosts/getJobPostsByLocation';  
   private getAllCountriesURL = 'http://localhost:8088/api/country/getAll'
   private getAllStacksURL = 'http://localhost:8088/api/techstack/getAll'
+  private createJobURL = 'http://localhost:8088/api/jobPosts/createJobPost';
+
 
   constructor(private http: HttpClient) { }
 
@@ -24,9 +26,8 @@ export class JobpostsService {
     return this.http.get<Job[]>(this.getJobsURL);
   }
 
-  private applyForJobURL = 'http://localhost:8088/api/jobPosts/createJobPost';
-  applyForJob(userAndJobinfo): Observable<any> {    
-    return this.http.post<any>(this.applyForJobURL, JSON.stringify(userAndJobinfo), httpOptions);
+  createJob(newJob): Observable<any> {    
+    return this.http.post<any>(this.createJobURL, JSON.stringify(newJob), httpOptions);
   }
 
   getAllCountries(): Observable<any[]> {    

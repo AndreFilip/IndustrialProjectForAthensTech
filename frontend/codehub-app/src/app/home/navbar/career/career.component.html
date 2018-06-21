@@ -5,24 +5,19 @@
 <div class="container" *ngIf="notChooseJob">
 
     <div class="m-5">
-        <form (ngSubmit)="onSearch(f)" #f="ngForm">
-            <div class="row">
-            <label for="jobtitleInput1" class="col-12 col-xl-1">JobTitle: </label>
-            <input id="jobtitleInput1" class="form-control col-12 col-xl-3" type="text" placeholder="Search" ngModel name="jobtitleInput">
-            <label for="locationInput1" class="col-12 col-xl-1">Location: </label>
-            <input id="locationInput1" class="form-control col-12 col-xl-3" type="text" placeholder="Search" ngModel name="locationInput">
-            <!-- <label for="stackInput1" class="col-12 col-sm-6 mt-3" >Stack:
-              <select id="stackInput1" multiple class="form-control col-12" (ngModel)="searchCriteria.stackInput" name="stackInput">
-                  <option *ngFor="let stackObj of stacks" [value]="stackObj.stack">{{stackObj.stack}}</option>
-                </select> 
-            </label>             -->
-            <div class="col-12 col-xl-2"> <button class="btn btn-info" type="submit" style="width:100%">Search</button></div>   
-            <div class="col-12 col-xl-2 "> <button class="btn btn-danger" click="clear()" style="width:100%">Clear</button></div>    
- 
-          </div>              
-        </form>        
+      <div class="row">
+        <form (ngSubmit)="onSearch(form1)" #form1="ngForm" class="col-12 col-xl-10">   
+          <div class="row"> 
+            <label for="jobtitleInput1" class="col-12 col-xl-2">JobTitle: </label>
+            <input id="jobtitleInput1" class="form-control col-12 col-xl-3" type="text" placeholder="Search" [ngModel]="jobtitleInput" name="jobtitleInput">
+            <label for="locationInput1" class="col-12 col-xl-2">Location: </label>
+            <input id="locationInput1" class="form-control col-12 col-xl-3" type="text" placeholder="Search" [ngModel]="locationInput" name="locationInput">     
+            <div class="col-12 col-xl-2 my-2 my-xl-0"> <button class="btn btn-info" type="submit" style="width:100%">Search</button></div>       
+          </div>       
+        </form>   
+        <div class="col-12 col-xl-2 my-2 my-xl-0"> <button class="btn btn-danger" (click)="clear()" style="width:100%">Clear</button></div>
+      </div>           
     </div>
-   
 
   <ul class="text-center" >      
     <li class="row mt-2" *ngFor="let job of jobs">        

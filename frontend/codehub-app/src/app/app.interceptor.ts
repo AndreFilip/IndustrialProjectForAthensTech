@@ -18,7 +18,7 @@ export class Interceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     if(this.token.getToken() !=null){
-      console.log("TOKEN : "+this.token.getToken());
+      console.log("TOKEN : " + this.token.getToken());
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${this.token.getToken()}`
