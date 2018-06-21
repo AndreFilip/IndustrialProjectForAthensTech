@@ -2,7 +2,7 @@
     <h2 class="text-center">Code.Learn Programs</h2>
 </header>
 
-<div class="container">
+<div class="container"  *ngIf="notChooseProgram">
   <div class="row">
     <div class="col-12 col-lg-3">
         <div class="row mb-5">
@@ -45,21 +45,24 @@
             <hr>
         </li>  
         <li class="mb-5" *ngFor="let p of programs">
-            <a href="" class="">         
+            <a class="" (click)="onSelectProgram(p)">         
             <img [src]="p.programLogo" alt="programLogo" width="" height="" class="img-fluid"/>
             <h2 class="">{{p.programTitle}}</h2>          
             </a>
             <h5 class="">€ {{p.price}}</h5>
-            <a href="#"><button type="button" class="btn btn-lg btn-block btn-info">Read more</button></a>
+            <a (click)="onSelectProgram(p)"><button type="button" class="btn btn-lg btn-block btn-info">Read more</button></a>
             <hr>
         </li>  
         
       </ul>
     </div>
-    </div>
-    <div class="col-12">
-        <hr>
-        <h5 class="text-center m-5">Need more info?</h5>
-        <h6 class="text-center m-5">We’re here to help. Send us an email (info@codehub.gr)</h6>
-    </div>
+    </div>    
+</div>
+
+<app-programsdetail [selectedProgram]="theProgram" (programExit)="onProgramExit()"></app-programsdetail>
+
+<hr>
+<div class="my-3"> 
+    <h5 class="text-center m-5">Need more info?</h5>
+    <h6 class="text-center m-5">We’re here to help. Send us an email (info@codehub.gr)</h6>
 </div>

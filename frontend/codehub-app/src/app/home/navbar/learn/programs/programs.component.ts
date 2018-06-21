@@ -15,6 +15,9 @@ export class ProgramsComponent implements OnInit {
   teckstacks: any [];
   programs: Program [];
 
+  notChooseProgram: boolean = true;
+  theProgram: Program;  
+
   constructor(private jobpostsService: JobpostsService, private programService: ProgramService) {
     this.java_seminar = '/assets/images/java_seminar.png';
     this.react = '/assets/images/react.png';
@@ -23,6 +26,16 @@ export class ProgramsComponent implements OnInit {
   ngOnInit() {
     this.getAllStacks();
     this.getPrograms();
+  }
+
+  onSelectProgram(program: Program): void {
+    this.theProgram = program;
+    this.notChooseProgram = false;
+  }
+
+  onProgramExit() {
+    this.theProgram = null;
+    this.notChooseProgram = true;
   }
 
   getAllStacks() {

@@ -10,7 +10,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class CareerdetailComponent implements OnInit {
-  jobs: Job [];
   @Input() selectedJob: Job;
   @Output() jobExit = new EventEmitter;   
 
@@ -23,23 +22,6 @@ export class CareerdetailComponent implements OnInit {
   onExit() {
     this.jobExit.emit();
   }
-
-  // applyForJob(userAndJobinfo) {
-  //   this.jobpostsService.applyForJob(userAndJobinfo).subscribe(
-  //     response => { 
-  //                 console.log(response);
-  //                 alert("You applied successfully.");
-  //                 this.jobExit.emit();
-  //                 } ,
-  //     err =>      {
-  //                 console.log(err);
-  //                 alert("Something went wrong. You did not apply successfully.");                  
-  //                 }
-  //   );
-
-  // }
-
- 
 
 
 

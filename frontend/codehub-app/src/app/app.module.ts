@@ -39,6 +39,7 @@ import {AuthService} from "./auth.service";
 import {TokenStorage} from "./token.storage";
 import { AdminService } from './home/admin/admin-login/admin.service';
 import { ProgramService } from './programs.service';
+import { ProgramsdetailComponent } from './home/navbar/learn/programsdetail/programsdetail.component';
 
 
 
@@ -66,7 +67,8 @@ import { ProgramService } from './programs.service';
     UsersComponent,
     EditProfileComponent,
     CareerdetailComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    ProgramsdetailComponent
   ],
   imports: [
     BrowserModule,
